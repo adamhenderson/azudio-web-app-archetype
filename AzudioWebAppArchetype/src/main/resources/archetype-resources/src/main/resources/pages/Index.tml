@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" xmlns:p="tapestry:parameter">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+		<title>${application-name}</title>
+		<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/dojo/1.10.2/dijit/themes/claro/document.css" type="text/css" />
+		<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/dojo/1.10.2/dijit/themes/claro/claro.css" type="text/css" />
+		<!--<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/dojo/1.10.2/dojox/grid/resources/Grid.css" type="text/css" />
+		<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/dojo/1.10.2/dojox/grid/resources/claroGrid.css" type="text/css" />-->
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" type="text/css" />
+		<link rel="stylesheet" href="//cdn.rawgit.com/SitePen/dgrid/v0.4.0/css/dgrid.css" type="text/css" />
+		<link rel="stylesheet" href="//cdn.rawgit.com/SitePen/dgrid/v0.4.0/css/skins/claro.css" type="text/css" />
+		<link rel="stylesheet" href="/css/common.css" type="text/css" />
+		<link rel="stylesheet" href="/css/application.css" type="text/css" />
+	</head>
+	<body class="claro">
+		<div id="loader">
+			<div id="loader-mover">
+				<div id="loaderInner">
+					<h2 id="loader-message" style="padding: 5px;">Loading ...</h2>
+				</div>
+			</div>
+		</div>
+		<div id="main" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="liveSplitters: true, design: 'headline', gutters: false">
+			<div id="app-header" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'top'">
+				<div style="float: right; color: #E5E5E5; font-size: 1.2em">
+					<i class="fa fa-cog"></i>System<i class="fa fa-caret-down"></i>&nbsp;
+					<i class="fa fa-user"></i>Lastname, Firstname<i class="fa fa-caret-down"></i>
+				</div>
+				<h1>${application-name}</h1>
+			</div>
+			<div data-dojo-type="dijit/layout/TabContainer" data-dojo-props="region: 'center'" style="padding: 0 5px 5px 5px;">
+				<!-- INSTRUCTIONS TAB -->
+				<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="title: 'Instructions', closable: false">
+					<h2>Azudio Web Application Temaplete</h2>
+					<p>This application template is designed to get you up to speed as quickly as possible and to provide examples of using various technologies ready for you to modify.</p>
+					<p>The application is built as a Single-Page Application where all interaction with the server is done asyncronusly. The main client side technoloty used is the Dojo Toolkit comprising of its AMD loader and the Dijit GUI library, therefore Tapestry is configured not to use the out-of-the-box Bootstrap/jQuery stack.</p>
+					<p>
+						Features:
+						<ul>
+							<h4>General</h4>
+							<li>Single Page Application</li>
+							<h4>Client-Side</h4>
+							<li>Dojo 1.10.2;</li>
+							<ul>
+								<li>Integration with Tapestry</li>
+								<li>Configuration</li>
+								<li>Dijit for building complex application layouts</li>
+								<li>AMD/Require</li>
+								<li>Configuring the loader to use CDN for external libraries</li>
+							</ul>
+							<li>An example of a complex application layout (TeamSite GUI)</li>
+							<li>SitePen dstore 1.0.0 &amp; dgrid 0.4.0</li>
+							<li>Font Awesome 4.2.0</li>
+							<h4>Server-Side</h4>
+							<li>Tapestry 5.4 (beta-22)</li>
+							<li>Tapestry JPA using Hibernate &amp; Configuration</li>
+							<li>EasyCriteria for simpler JPA queries</li>
+							<li>REST through Tynamo tapestry-resteasy 5.4</li>
+							<li>Real-Time Support using the Atmosphere Framework through the Azudio tapestry-atmosphere integration</li>
+							<li>Maven directory layout</li>
+							<li>Fast running with RunJettyRun or the Eclipse Jetty Integration</li>
+						</ul>
+					</p>
+				</div>
+				<!-- DND TAB -->
+				<div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="title: 'DnD', gutters: false, closable: false">
+					<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'top'">
+						<h2>Drag'n'Drop Example</h2>
+						<p>This page is an example of how Dojo D'n'D can be used.</p>
+						<p>Drag items from the left box into the areas on the right.</p>
+					</div>
+					<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'left'" style="width: 50%;">
+						<h2>Source</h2>
+						<div id="catalogNode"></div>
+					</div>
+					<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'right'" style="width: 50%;">
+						<h2>Target</h2>
+						<div id="targetNode" style="padding: 5px; background-color: #eee; width: 250px; display: inline-block"></div>
+						<div style="padding: 5px; background-color: #eee; width: 250px; display: inline-block"></div>
+						<div style="padding: 5px; background-color: #eee; width: 250px; display: inline-block"></div>
+					</div>
+				</div>
+				<!-- REALTIME TAB -->
+				<div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="title: 'Real-Time', gutters: false, closable: false">
+					<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'top'">
+						<h2>Real-Time Example</h2>
+						<p>This page is an example of how real time communication can be used.</p>
+						<p>The examples here can be used to send a message to the server which will generate a new Person instance, add it to the database then broadcast the addition, all connected clients will recieve the update which will add the new Person instance to the grid.</p>
+						<h2>Actions</h2>
+					</div>
+					<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'center'">
+						<div id="realtimePersonGrid"/>
+					</div>
+				</div>
+				<!--  REST TAB -->
+				<div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="title: 'REST', gutters: false, closable: false">
+					<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'top'">
+						<h2>REST Example</h2>
+						<p>This page is an example of how interacting with a REST Servive can be done.</p>
+						<h2>Actions</h2>
+					</div>
+					<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'center'">
+						<div id="restGrid">Grid to go here</div>
+					</div>
+					<!-- <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'center'">
+						<h2>REST Playground</h2>
+						<p>This page will be used to demostrate the REST back end.</p>
+						<br></br>
+						<form>
+							<button data-dojo-type="dijit/form/Button">
+								Add a Person to the Person Rest Store
+							<script type="dojo/on" data-dojo-event="click"><![CDATA[
+								require(["app/DataStoresModule"],function(ds){
+									 ds.presonRest.add({
+									 	"name": "Test: " + new Date().getTime()
+									 }).then(function(data){
+									 	console.log(data);
+									 });
+								}); 
+								
+							]]></script>
+							</button>
+							<button data-dojo-type="dijit/form/Button">
+								Refresh
+								<script type="dojo/on" data-dojo-event="click"><![CDATA[
+									pagesGrid.refresh();
+							]]></script>
+							</button>
+							<button data-dojo-type="dijit/form/Button">
+								Get ID: 2
+								<script type="dojo/on" data-dojo-event="click"><![CDATA[
+								var ds = require("app/DataStoresModule"); 
+								var when = require("dojo/when"); 
+								 when(
+									 ds.pageStore.get(2),
+									 
+									 function(data){
+									 	console.log(data);
+									 },
+									 
+									 function(err){
+									 	alert("Could not find item 2");
+									 }
+								 );
+							]]></script>
+							</button>
+							<button data-dojo-type="dijit/form/Button">
+								Query All
+								<script type="dojo/on" data-dojo-event="click"><![CDATA[
+								var ds = require("app/DataStoresModule"); 
+								 ds.pageStore.query({}).then(function(data){
+								 	console.log(data);
+								 });
+							]]></script>
+							</button>
+							<button data-dojo-type="dijit/form/Button">
+								Send
+								<script type="dojo/on" data-dojo-event="click"><![CDATA[
+								var s = require("app/Socket"); 
+								 s.send("message=Hello " + new Date());
+							]]></script>
+							</button>
+						</form>
+						<t:eventlink event="newEntity">Create New Entity (Traditional)</t:eventlink>
+						<t:eventlink event="clearAll">Clear All (Traditional)</t:eventlink>
+						<t:grid source="people" row="p" />
+					</div> -->
+					<!-- <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'bottom'" style="height: 200px; padding: 0; border-top: 1px solid #b5bcc7;">
+						<style><![CDATA[ 
+							#pagesGrid .field-id {width: 55px;} 
+							#pagesGrid .field-name {width: auto;} 
+						]]></style>
+						<div id="pagesGrid" class="noLeftBorder" style="height: 100%" />
+					</div> -->
+				</div>
+				<div id="teamsiteGUITab" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="title:'TeamSite GUI', gutters: false">
+					<div id="teamsiteGUITab_top_menu" data-dojo-type="dijit/MenuBar" data-dojo-props="region:'top'">
+						<div id="teamsiteGUITab_top_menu_file" data-dojo-type="dijit/PopupMenuBarItem">
+							<span>File</span>
+							<div data-dojo-type="dijit/Menu">
+								<div data-dojo-type="dijit/MenuItem" data-dojo-props="onClick:function(){alert('Menu Item 1');}">Menu Item 1</div>
+								<div data-dojo-type="dijit/MenuItem" data-dojo-props="onClick:function(){alert('Menu Item 2');}">Menu Item 2</div>
+								<div data-dojo-type="dijit/MenuItem" data-dojo-props="onClick:function(){alert('Menu Item 3');}">Menu Item 3</div>
+							</div>
+						</div>
+						<div id="teamsiteGUITab_top_menu_edit" data-dojo-type="dijit/PopupMenuBarItem">
+							<span>Edit</span>
+							<div data-dojo-type="dijit/Menu">
+								<div data-dojo-type="dijit/MenuItem" data-dojo-props="onClick:function(){alert('Menu Item 1');}">Menu Item 1</div>
+								<div data-dojo-type="dijit/MenuItem" data-dojo-props="onClick:function(){alert('Menu Item 2');}">Menu Item 2</div>
+								<div data-dojo-type="dijit/MenuItem" data-dojo-props="onClick:function(){alert('Menu Item 3');}">Menu Item 3</div>
+							</div>
+						</div>
+						<div id="teamsiteGUITab_top_menu_view" data-dojo-type="dijit/PopupMenuBarItem">
+							<span>View</span>
+							<div data-dojo-type="dijit/Menu">
+								<div data-dojo-type="dijit/MenuItem" data-dojo-props="onClick:function(){alert('Menu Item 1');}">Menu Item 1</div>
+								<div data-dojo-type="dijit/MenuItem" data-dojo-props="onClick:function(){alert('Menu Item 2');}">Menu Item 2</div>
+								<div data-dojo-type="dijit/MenuItem" data-dojo-props="onClick:function(){alert('Menu Item 3');}">Menu Item 3</div>
+							</div>
+						</div>
+						<div id="teamsiteGUITab_top_menu_actions" data-dojo-type="dijit/PopupMenuBarItem">
+							<span>Actions</span>
+							<div data-dojo-type="dijit/Menu">
+								<div data-dojo-type="dijit/MenuItem" data-dojo-props="onClick:function(){alert('Menu Item 1');}">Menu Item 1</div>
+								<div data-dojo-type="dijit/MenuItem" data-dojo-props="onClick:function(){alert('Menu Item 2');}">Menu Item 2</div>
+								<div data-dojo-type="dijit/MenuItem" data-dojo-props="onClick:function(){alert('Menu Item 3');}">Menu Item 3</div>
+							</div>
+						</div>
+						<div id="teamsiteGUITab_top_menu_publish" data-dojo-type="dijit/PopupMenuBarItem">
+							<span>Publisher</span>
+							<div data-dojo-type="dijit/Menu">
+								<div data-dojo-type="dijit/MenuItem" data-dojo-props="onClick:function(){alert('Menu Item 1');}">Menu Item 1</div>
+								<div data-dojo-type="dijit/MenuItem" data-dojo-props="onClick:function(){alert('Menu Item 2');}">Menu Item 2</div>
+								<div data-dojo-type="dijit/MenuItem" data-dojo-props="onClick:function(){alert('Menu Item 3');}">Menu Item 3</div>
+							</div>
+						</div>
+						<div id="teamsiteGUITab_top_menu_tools" data-dojo-type="dijit/PopupMenuBarItem">
+							<span>Tools</span>
+							<div data-dojo-type="dijit/Menu">
+								<div data-dojo-type="dijit/MenuItem" data-dojo-props="onClick:function(){alert('Menu Item 1');}">Menu Item 1</div>
+								<div data-dojo-type="dijit/MenuItem" data-dojo-props="onClick:function(){alert('Menu Item 2');}">Menu Item 2</div>
+								<div data-dojo-type="dijit/MenuItem" data-dojo-props="onClick:function(){alert('Menu Item 3');}">Menu Item 3</div>
+							</div>
+						</div>
+						<div id="teamsiteGUITab_top_menu_rightoptions" style="float: right; padding: 5px 10px 0 0">
+							<i class="fa fa-search"></i>
+							Search
+							<span style="color: #b5bcc7"> | </span>
+							<i class="fa fa-clock-o"></i>
+							Get Latest
+							<span style="color: #b5bcc7"> | </span>
+							<i class="fa fa-exchange"></i>
+							Compare
+							<span style="color: #b5bcc7"> | </span>
+							<i class="fa fa-edit"></i>
+							Edit
+						</div>
+					</div>
+					<div id="teamsiteGUITab_left" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="region:'left', gutters: false, splitter: true, minSize: 250, maxSize: 300" style="width: 250px; border-right: 1px solid #b5bcc7;">
+						<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'top'" style="height: 30px; background-color: #eee; border-bottom: 1px solid #b5bcc7;">
+							<div style="float: left; line-height: 30px; color: #666;">
+								<strong style="text-transform: uppercase;">Component:</strong>
+								Installed Components
+							</div>
+						</div>
+						<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'center'" style="padding: 0px">
+							<div id="teamsiteGUITab_tree"></div>
+						</div>
+					</div>
+					<div id="teamsiteGUITab_center" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="region:'center', gutters: false" style="border-left: 1px solid #b5bcc7;">
+						<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'top'" style="height: 30px; background-color: #eee; border-bottom: 1px solid #b5bcc7;">
+							<div style="display: inline; line-height: 30px; colour: #666;">
+								<i class="fa fa-star"></i>
+								<span style="color: #b5bcc7"> | </span>
+								<i class="fa fa-briefcase"></i>
+							</div>
+							<span style="color: #b5bcc7"> | </span>
+							<input data-dojo-type="dijit/form/TextBox" />
+							<button data-dojo-type="dijit/form/Button">Go</button>
+						</div>
+						<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'top'" style="background-color: #eee; border-bottom: 1px solid #b5bcc7;">
+							<strong style="color: #666; text-transform: uppercase;">All Files: content</strong>
+							<button data-dojo-type="dijit/form/Button" style="float: right">New Folder</button>
+							<button data-dojo-type="dijit/form/Button" style="float: right">Properties</button>
+						</div>
+						<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'center'" style="padding: 0;">
+							<div id="teamsiteGUITab_grid" class="noLeftBorder" style="height: 100%"></div>
+						</div>
+						<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'bottom'" style="background-color: #eee; border-top: 1px solid #b5bcc7;">
+							<span>22 Files</span>
+							<span style="float: right;">
+								Show: 100 |
+								<a href="#">All</a>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div data-dojo-type="dijit/Dialog" id="newComponentDialog" title="New Component" style="width: 600px;" data-dojo-props="closable: false">
+			<div id="newComponentForm" data-dojo-type="dijit/form/Form">
+				<div class="dijitDialogPaneContentArea" style="overflow-y: auto; height: 400px">
+					<table>
+						<tr>
+							<td>
+								<label for="newComponentId">ID: </label>
+							</td>
+							<td>
+								<input data-dojo-type="dijit/form/ValidationTextBox" name="newComponentId" id="newComponentId" data-dojo-props="required: true, missingMessage : 'A component ID is required'" />
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="newComponentName">Name:</label>
+							</td>
+							<td>
+								<input data-dojo-type="dijit/form/ValidationTextBox" name="newComponentName" id="newComponentName" data-dojo-props="required: true, missingMessage: 'A component name is required'" />
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="newComponentDescription">Description:</label>
+							</td>
+							<td>
+								<input data-dojo-type="dijit/form/ValidationTextBox" name="newComponentDescription" id="newComponentDescription" />
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="newComponentDataTypeDefinition">DataType Definition ID:</label>
+							</td>
+							<td>
+								<input data-dojo-type="dijit/form/TextBox" name="newComponentDataTypeDefinition" id="newComponentDataTypeDefinition" />
+							</td>
+						</tr>
+						<tr>
+							<td>Icon:</td>
+							<td>
+								<label for="generalComponentIcon">
+									<i class="fa fa-puzzle-piece"></i>
+								</label>
+								<input type="radio" data-dojo-type="dijit/form/RadioButton" name="newComponentIconClass" id="generalComponentIcon" value="fa-puzzle-piece" checked="checked" />
+								<label for="rowComponentIcon">
+									<i class="fa fa-columns"></i>
+								</label>
+								<input type="radio" data-dojo-type="dijit/form/RadioButton" name="newComponentIconClass" id="rowComponentIcon" value="fa-columns" />
+								<label for="headingComponentIcon">
+									<i class="fa fa-header"></i>
+								</label>
+								<input type="radio" data-dojo-type="dijit/form/RadioButton" name="newComponentIconClass" id="headingComponentIcon" value="fa-header" />
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="newComponentTemplate">Component Template:</label>
+							</td>
+							<td>
+								<textarea data-dojo-type="dijit/form/SimpleTextarea" name="newComponentTemplate" id="newComponentTemplate" style="width: 400px;" rows="20"></textarea>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="newComponentNumberOfContainers">Number of Containers:</label>
+							</td>
+							<td>
+								<input data-dojo-type="dijit/form/TextBox" name="newComponentNumberOfContainers" id="newComponentNumberOfContainers" />
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="dijitDialogPaneActionBar">
+					<input type="submit" value="save" label="Save" id="newComponentSaveButton" data-dojo-type="dijit/form/Button" />
+					<button id="newComponentCancelButton" data-dojo-type="dijit/form/Button">Cancel</button>
+				</div>
+			</div>
+		</div>
+		<script src="/js/dojo-config.js" type="text/javascript"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/dojo/1.10.2/dojo/dojo.js" type="text/javascript"></script>
+		<script src="/js/main.js" type="text/javascript"></script>
+	</body>
+</html>
