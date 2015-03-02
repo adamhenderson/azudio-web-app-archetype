@@ -4,9 +4,9 @@
 package ${package}.services;
 
 /**
- * Core Interface
+ * AppCore Interface
  */
-public interface Core {
+public interface AppCore {
 	public String getApplicationName();
 	public void saveComponent();
 	public void loadComponent();

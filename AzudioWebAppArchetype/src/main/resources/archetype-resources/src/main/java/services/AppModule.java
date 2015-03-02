@@ -19,15 +19,15 @@ import org.apache.tapestry5.jpa.PersistenceUnitConfigurer;
 import org.apache.tapestry5.jpa.TapestryPersistenceUnitInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.azudio.tapestry.atmosphere.module.AtmosphereModule;
-import ${package}.services.rest.PersonResource;
-import ${package}.services.rest.PersonResourceJPA;
+//import com.azudio.tapestry.atmosphere.module.AtmosphereModule;
+//import ${package}.services.rest.PersonResource;
+//import ${package}.services.rest.PersonResourceJPA;
 
 
 /**
  * Module to configure your Tapestry Application.
  */
-@ImportModule({ AtmosphereModule.class })
+@ImportModule({ /*Uncomment to enable Atmosphere: AtmosphereModule.class*/})
 public class AppModule {
 
 	private static final Logger log = LoggerFactory.getLogger(AppModule.class);
@@ -82,6 +82,9 @@ public class AppModule {
 	public static void contributeApplicationDefaults(MappedConfiguration<String, Object> configuration) {
 		configuration.add(SymbolConstants.PRODUCTION_MODE, false);
 		configuration.add(SymbolConstants.INCLUDE_CORE_STACK, false);
+		configuration.add(SymbolConstants.ENABLE_HTML5_SUPPORT, true);
+		configuration.add(SymbolConstants.ENABLE_PAGELOADING_MASK, false);
+		configuration.add(SymbolConstants.COMBINE_SCRIPTS, false);
 	}
 
 	/**
@@ -91,10 +94,10 @@ public class AppModule {
 	 */
 	public static void bind(ServiceBinder binder) {
 
-		binder.bind(Core.class, CoreImpl.class);
+		binder.bind(AppCore.class, AppCoreImpl.class);
 
 		// REST Services
-		binder.bind(PersonResource.class, PersonResourceJPA.class);
+		/* Uncomment to enable REST Example binder.bind(PersonResource.class, PersonResourceJPA.class);*/
 
 	}
 
@@ -104,10 +107,11 @@ public class AppModule {
 	 * @param singletons
 	 * @param pageResource
 	 */
+	/*Uncomment to enable REST Example 
 	@Contribute(javax.ws.rs.core.Application.class)
 	public static void configureRestResources(Configuration<Object> singletons, PersonResource pageResource) {
 		singletons.add(pageResource);
-	}
+	}*/
 
 	/**
 	 * REST: To support the @CommitAfter annotation, the *Resource classes are advised wrapping in a transaction
@@ -115,9 +119,10 @@ public class AppModule {
 	 * @param advisor
 	 * @param receiver
 	 */
+	/*Uncomment to enable REST Example 
 	@Match({ "*Resource", "*Handler" })
 	public static void adviseTransactionally(JpaTransactionAdvisor advisor, MethodAdviceReceiver receiver) {
 		advisor.addTransactionCommitAdvice(receiver);
-	}
+	}*/
 
 }

@@ -34,11 +34,11 @@
 			<artifactId>tapestry-core</artifactId>
 			<version>${tapestry-release-version}</version>
 		</dependency>
-		<dependency>
+		<!--<dependency>
 			<groupId>org.apache.tapestry</groupId>
 			<artifactId>tapestry-webresources</artifactId>
 			<version>${tapestry-release-version}</version>
-		</dependency>
+		</dependency>-->
 		<!-- LOGGING -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -54,7 +54,7 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
-			<version>4.0.1.Final</version>
+			<version>4.3.8.Final</version>
 		</dependency>
 		<dependency>
 			<groupId>uaihebert.com</groupId>
@@ -74,22 +74,22 @@
 			<scope>compile</scope>
 		</dependency> -->
 		<!-- REST Support -->
-		<dependency>
+		<!--<dependency>
 			<groupId>org.tynamo</groupId>
 			<artifactId>tapestry-resteasy</artifactId>
 			<version>0.4.0</version>
-		</dependency>
-		<dependency>
+		</dependency>-->
+		<!--<dependency>
 			<groupId>org.jboss.resteasy</groupId>
 			<artifactId>resteasy-jackson-provider</artifactId>
 			<version>3.0.7.Final</version>
-		</dependency>
+		</dependency>-->
 		<!-- WebSocket Support -->
-		<dependency>
+		<!--<dependency>
 			<groupId>com.azudio</groupId>
 			<artifactId>tapestry-atmosphere</artifactId>
 			<version>0.0.3-SNAPSHOT</version>
-		</dependency>
+		</dependency>-->
 		<!-- SECURITY -->
 		<!-- <dependency>
 			<groupId>org.tynamo</groupId>
@@ -126,6 +126,6 @@
 		</dependency> -->
 	</dependencies>
 	<properties>
-		<tapestry-release-version>5.4-beta-22</tapestry-release-version>
+		<tapestry-release-version>5.4-beta-26</tapestry-release-version>
 	</properties>
 </project>

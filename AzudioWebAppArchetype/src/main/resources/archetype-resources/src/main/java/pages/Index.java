@@ -13,12 +13,12 @@ import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.jpa.annotations.CommitAfter;
 import org.apache.tapestry5.services.RequestGlobals;
-import org.atmosphere.cpr.AtmosphereFramework;
-import org.atmosphere.cpr.Broadcaster;
+//import org.atmosphere.cpr.AtmosphereFramework;
+//import org.atmosphere.cpr.Broadcaster;
 import org.slf4j.Logger;
 
 import ${package}.entities.Person;
-import ${package}.services.Core;
+import ${package}.services.AppCore;
 import com.uaihebert.factory.EasyCriteriaFactory;
 
 /**
@@ -31,24 +31,24 @@ public class Index {
 
 	@Property
 	@Inject
-	private Core core;
+	private AppCore appCore;
 
 	@Inject
 	private EntityManager persistence;
 
 	public String getApplicationName() {
-		return core.getApplicationName();
+		return appCore.getApplicationName();
 	}
 
 	public void onSaveComponent() {
-		core.saveComponent();
+		appCore.saveComponent();
 	}
 
 	@Inject
 	private RequestGlobals requestGlobals;
 
-	@Inject
-	private AtmosphereFramework framework;
+	//@Inject
+	//private AtmosphereFramework framework;
 
 	@CommitAfter
 	public void onNewEntity() {
@@ -60,8 +60,8 @@ public class Index {
 		persistence.persist(p);
 
 		// Now broadcast that new Person to all subscribers
-		Broadcaster broadcaster = framework.getAtmosphereConfig().getBroadcasterFactory().lookup("/tapestryatmospherehandlerexample1");
-		broadcaster.broadcast(p);
+		//Broadcaster broadcaster = framework.getAtmosphereConfig().getBroadcasterFactory().lookup("/tapestryatmospherehandlerexample1");
+		//broadcaster.broadcast(p);
 	}
 
 	public List<Person> getPeople() {

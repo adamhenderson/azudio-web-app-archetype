@@ -4,9 +4,9 @@
 package ${package}.services;
 
 /**
- * Core Implementation;
+ * AppCore Implementation;
  */
-public class CoreImpl implements Core{
+public class AppCoreImpl implements AppCore{
 
 	public String getApplicationName() {
 		return "${artifactId}";
