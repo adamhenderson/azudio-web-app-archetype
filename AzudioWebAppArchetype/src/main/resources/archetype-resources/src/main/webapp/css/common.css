@@ -93,9 +93,6 @@ html, body {
 	margin-bottom: 4px;
 }
 
-
-
-
 .claro .dijitTabContainerTop-dijitBorderContainerNoGutter>.dijitMenuBar {
 	border: none;
 	border-bottom: 1px solid #b5bcc7;
@@ -128,6 +125,10 @@ html, body {
 
 .field-actions {
 	width: 100px;
+}
+
+.field-icon {
+	width: 8px;
 }
 
 *:focus{
