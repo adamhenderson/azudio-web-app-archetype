@@ -285,7 +285,7 @@
 				</div> -->
 			</div>
 		</div>
-		<div data-dojo-type="dijit/Dialog" id="newComponentDialog" title="New Component" style="width: 600px;" data-dojo-props="closable: false">
+		<!-- <div data-dojo-type="dijit/Dialog" id="newComponentDialog" title="New Component" style="width: 600px;" data-dojo-props="closable: false">
 			<div id="newComponentForm" data-dojo-type="dijit/form/Form">
 				<div class="dijitDialogPaneContentArea" style="overflow-y: auto; height: 400px">
 					<table>
@@ -361,7 +361,7 @@
 					<button id="newComponentCancelButton" data-dojo-type="dijit/form/Button">Cancel</button>
 				</div>
 			</div>
-		</div>
+		</div> -->
 		<script src="/js/dojo-config.js" type="text/javascript"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js" type="text/javascript"></script>
 		<script src="/js/main.js" type="text/javascript"></script>
