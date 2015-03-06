@@ -1,6 +1,6 @@
 var startTime = new Date();
-require([ "dojo/ready", "app/Application"], function(ready, application) {
+require([ "dojo/ready", "app/Application",  "dojo/parser"], function(ready, Application) {
 	ready(function() {
-		application.init();
+		Application.init();
 	});
 });

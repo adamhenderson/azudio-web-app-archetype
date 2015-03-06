@@ -1,6 +1,6 @@
 define([
 
-"dojo/_base/declare", "dojo/dom", "dojo/Stateful", "dojo/_base/fx", "app/ExampleGUI",  "dojo/parser"
+"dojo/_base/declare", "dojo/dom", "dojo/Stateful", "dojo/_base/fx", "app/ExampleGUI"
 
 ], function(
 
