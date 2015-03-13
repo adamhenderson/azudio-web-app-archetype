@@ -4,7 +4,7 @@ define([
 
 ], function(
 
-declare, dom, Stateful, fx, ExampleGUIInit) {
+declare, dom, Stateful, fx, ExampleGUI) {
     
     return new declare("Application", [ Stateful ], {
 
