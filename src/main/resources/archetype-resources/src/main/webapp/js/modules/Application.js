@@ -1,6 +1,9 @@
+/**
+ * This file contains the main Application definition. 
+ */
 define([
 
-"dojo/_base/declare", "dojo/dom", "dojo/Stateful", "dojo/_base/fx", "app/ExampleGUI"
+"dojo/_base/declare", "dojo/dom", "dojo/Stateful", "dojo/_base/fx"
 
 ], function(
 
