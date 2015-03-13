@@ -63,12 +63,6 @@
 						</ul>
 					</p>
 				</div>
-				<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="title: 'REST Instructions', closable: false">
-				By default the REST features are disabled
-				</div>
-				<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="title: 'Real Time Instructions', closable: false">
-				By default the RealTime features are disabled
-				</div>
 				<div id="exampleGUITab" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="title:'Example GUI', gutters: false">
 					<div id="exampleGUITab_top_menu" data-dojo-type="dijit/MenuBar" data-dojo-props="region:'top'">
 						<div id="exampleGUITab_top_menu_file" data-dojo-type="dijit/PopupMenuBarItem">
@@ -172,24 +166,41 @@
 						</div>
 					</div>
 				</div>
+				<!--  REST TAB -->
+				<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="title: 'REST Instructions', closable: false">
+				By default the REST features are disabled
+				</div>
+				<!-- REALTIME TAB -->
+				<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="title: 'Real Time Instructions', closable: false">
+				By default the RealTime features are disabled
+				</div>
 				<!-- DND TAB -->
-				<!-- <div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="title: 'DnD', gutters: false, closable: false">
+				<div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="title: 'DnD', gutters: false, closable: false">
 					<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'top'">
 						<h2>Drag'n'Drop Example</h2>
 						<p>This page is an example of how Dojo D'n'D can be used.</p>
 						<p>Drag items from the left box into the areas on the right.</p>
+						<div style="width: 50%; display: inline-block; vertical-align: top;">
+							<div style="padding-right:5px">
+								<h2>Source</h2>
+								<div data-dojo-type="dojo/dnd/Source" class="container"  style="border:1px dashed #ddd;min-height:20px;">
+									<div class="dojoDndItem">Wrist watch</div>
+									<div class="dojoDndItem">Life jacket</div>
+									<div class="dojoDndItem">Toy bulldozer</div>
+									<div class="dojoDndItem">Vintage microphone</div>
+									<div class="dojoDndItem">TIE fighter</div>
+								</div>
+							</div>
+						</div>
+						<div style="width: 50%; display: inline-block; vertical-align: top;">
+							<div style="padding-left:5px">
+								<h2>Target</h2>
+								<div data-dojo-type="dojo/dnd/Source" class="container" style="border:1px dashed #ddd;min-height:20px;">
+								</div>
+							</div>
+						</div>
 					</div>
-					<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'left'" style="width: 50%;">
-						<h2>Source</h2>
-						<div id="catalogNode"></div>
-					</div>
-					<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'right'" style="width: 50%;">
-						<h2>Target</h2>
-						<div id="targetNode" style="padding: 5px; background-color: #eee; width: 250px; display: inline-block"></div>
-						<div style="padding: 5px; background-color: #eee; width: 250px; display: inline-block"></div>
-						<div style="padding: 5px; background-color: #eee; width: 250px; display: inline-block"></div>
-					</div>
-				</div> -->
+				</div>
 				<!-- REALTIME TAB -->
 				<!-- <div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="title: 'Real-Time', gutters: false, closable: false">
 					<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'top'">

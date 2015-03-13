@@ -97,7 +97,8 @@ public class AppModule {
 		binder.bind(AppCore.class, AppCoreImpl.class);
 
 		// REST Services
-		/* Uncomment to enable REST Example binder.bind(PersonResource.class, PersonResourceJPA.class);*/
+		// Uncomment to enable REST Example 
+		// binder.bind(PersonResource.class, PersonResourceJPA.class);
 
 	}
 
@@ -105,13 +106,13 @@ public class AppModule {
 	 * REST: Contribute the proxies services for Live Class Reloading
 	 * 
 	 * @param singletons
-	 * @param pageResource
+	 * @param pageResource 
 	 */
-	/*Uncomment to enable REST Example 
-	@Contribute(javax.ws.rs.core.Application.class)
-	public static void configureRestResources(Configuration<Object> singletons, PersonResource pageResource) {
-		singletons.add(pageResource);
-	}*/
+	// Uncomment to enable REST Example 
+	// @Contribute(javax.ws.rs.core.Application.class)
+	// public static void configureRestResources(Configuration<Object> singletons, PersonResource pageResource) {
+	// 	singletons.add(pageResource);
+	// }*/
 
 	/**
 	 * REST: To support the @CommitAfter annotation, the *Resource classes are advised wrapping in a transaction
@@ -119,10 +120,10 @@ public class AppModule {
 	 * @param advisor
 	 * @param receiver
 	 */
-	/*Uncomment to enable REST Example 
-	@Match({ "*Resource", "*Handler" })
-	public static void adviseTransactionally(JpaTransactionAdvisor advisor, MethodAdviceReceiver receiver) {
-		advisor.addTransactionCommitAdvice(receiver);
-	}*/
+	// Uncomment to enable REST Example 
+	// @Match({ "*Resource", "*Handler" })
+	// public static void adviseTransactionally(JpaTransactionAdvisor advisor, MethodAdviceReceiver receiver) {
+	//	advisor.addTransactionCommitAdvice(receiver);
+	// }*/
 
 }

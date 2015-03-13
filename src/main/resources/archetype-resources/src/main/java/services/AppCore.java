@@ -8,8 +8,4 @@ package ${package}.services;
  */
 public interface AppCore {
 	public String getApplicationName();
-	public void saveComponent();
-	public void loadComponent();
-	public void duplicateComponent();
-	public void deleteComponent();
 }

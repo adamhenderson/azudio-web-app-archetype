@@ -12,16 +12,4 @@ public class AppCoreImpl implements AppCore{
 		return "${artifactId}";
 	}
 
-	public void saveComponent() {
-	}
-
-	public void loadComponent() {
-	}
-
-	public void duplicateComponent() {
-	}
-
-	public void deleteComponent() {
-	}
-
 }
