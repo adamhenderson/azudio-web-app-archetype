@@ -1,6 +1,6 @@
 define([
 
-"dgrid/OnDemandGrid", "dojo/store/Memory", "dijit/Tree", "dijit/tree/ObjectStoreModel", "dojo/data/ObjectStore", "dijit/layout/ContentPane", "dojo/text!/ExampleGUI.html", "dojo/parser", "dijit/registry", "dojo/ready", "dgrid/Tree", "dgrid/Keyboard", "dgrid/Selection" ], function(
+"dgrid/OnDemandGrid", "dojo/store/Memory", "dijit/Tree", "dijit/tree/ObjectStoreModel", "dojo/data/ObjectStore", "dijit/layout/ContentPane", "dojo/text!/./ExampleGUI.html", "dojo/parser", "dijit/registry", "dojo/ready", "dgrid/Tree", "dgrid/Keyboard", "dgrid/Selection" ], function(
 
 OnDemandGrid, Memory, Tree, ObjectStoreModel, ObjectStore, ContentPane, ExampleGUI, parser, registry, ready) {
 
