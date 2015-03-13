@@ -32,11 +32,6 @@ declare, dom, Stateful, fx) {
             console.info("Initialisation complete");
         },
         
-        addMainTab:function(tabName){
-            
-            
-        }
-
     })();
 
 });
