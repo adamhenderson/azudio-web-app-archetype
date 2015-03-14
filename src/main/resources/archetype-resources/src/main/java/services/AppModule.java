@@ -6,15 +6,12 @@ package ${package}.services;
 import javax.persistence.spi.PersistenceUnitTransactionType;
 
 import org.apache.tapestry5.SymbolConstants;
-import org.apache.tapestry5.ioc.Configuration;
+import org.apache.tapestry5.ioc.IOCSymbols;
 import org.apache.tapestry5.ioc.MappedConfiguration;
-import org.apache.tapestry5.ioc.MethodAdviceReceiver;
 import org.apache.tapestry5.ioc.ServiceBinder;
 import org.apache.tapestry5.ioc.annotations.Contribute;
 import org.apache.tapestry5.ioc.annotations.ImportModule;
-import org.apache.tapestry5.ioc.annotations.Match;
 import org.apache.tapestry5.jpa.EntityManagerSource;
-import org.apache.tapestry5.jpa.JpaTransactionAdvisor;
 import org.apache.tapestry5.jpa.PersistenceUnitConfigurer;
 import org.apache.tapestry5.jpa.TapestryPersistenceUnitInfo;
 import org.slf4j.Logger;
@@ -23,11 +20,10 @@ import org.slf4j.LoggerFactory;
 //import ${package}.services.rest.PersonResource;
 //import ${package}.services.rest.PersonResourceJPA;
 
-
 /**
  * Module to configure your Tapestry Application.
  */
-@ImportModule({ /*Uncomment to enable Atmosphere: AtmosphereModule.class*/})
+@ImportModule({ /* Uncomment to enable Atmosphere: AtmosphereModule.class */})
 public class AppModule {
 
 	private static final Logger log = LoggerFactory.getLogger(AppModule.class);
@@ -81,10 +77,12 @@ public class AppModule {
 	 */
 	public static void contributeApplicationDefaults(MappedConfiguration<String, Object> configuration) {
 		configuration.add(SymbolConstants.PRODUCTION_MODE, false);
-		configuration.add(SymbolConstants.INCLUDE_CORE_STACK, false);
 		configuration.add(SymbolConstants.ENABLE_HTML5_SUPPORT, true);
+		configuration.add(SymbolConstants.FORM_CLIENT_LOGIC_ENABLED, false);
+		configuration.add(SymbolConstants.INCLUDE_CORE_STACK, false);
 		configuration.add(SymbolConstants.ENABLE_PAGELOADING_MASK, false);
-		configuration.add(SymbolConstants.COMBINE_SCRIPTS, false);
+		configuration.add(SymbolConstants.COMBINE_SCRIPTS, true);
+		configuration.add(IOCSymbols.THREAD_POOL_CORE_SIZE, 7);
 	}
 
 	/**
