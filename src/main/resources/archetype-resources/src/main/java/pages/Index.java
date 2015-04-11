@@ -40,10 +40,6 @@ public class Index {
 		return appCore.getApplicationName();
 	}
 
-	public void onSaveComponent() {
-		appCore.saveComponent();
-	}
-
 	@Inject
 	private RequestGlobals requestGlobals;
 

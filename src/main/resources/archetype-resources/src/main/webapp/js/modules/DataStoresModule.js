@@ -6,10 +6,12 @@ declare, Memory, Rest, Trackable
 
 ) {
 
+    console.log("DataStoresModule called");
+    
 	return {
 
 		personRestStore : new declare([ Rest, Trackable ])({
-			target : "/rest/person/",
+			target : "/rest/people/",
 			sortParam : "sort"
 		}),
 

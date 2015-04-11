@@ -6,19 +6,23 @@ package ${package}.services;
 import javax.persistence.spi.PersistenceUnitTransactionType;
 
 import org.apache.tapestry5.SymbolConstants;
+import org.apache.tapestry5.ioc.Configuration;
 import org.apache.tapestry5.ioc.IOCSymbols;
 import org.apache.tapestry5.ioc.MappedConfiguration;
+import org.apache.tapestry5.ioc.MethodAdviceReceiver;
 import org.apache.tapestry5.ioc.ServiceBinder;
 import org.apache.tapestry5.ioc.annotations.Contribute;
 import org.apache.tapestry5.ioc.annotations.ImportModule;
+import org.apache.tapestry5.ioc.annotations.Match;
 import org.apache.tapestry5.jpa.EntityManagerSource;
+import org.apache.tapestry5.jpa.JpaTransactionAdvisor;
 import org.apache.tapestry5.jpa.PersistenceUnitConfigurer;
 import org.apache.tapestry5.jpa.TapestryPersistenceUnitInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 //import com.azudio.tapestry.atmosphere.module.AtmosphereModule;
-//import ${package}.services.rest.PersonResource;
-//import ${package}.services.rest.PersonResourceJPA;
+import ${package}.services.rest.PersonResource;
+import ${package}.services.rest.PersonResourceJPA;
 
 /**
  * Module to configure your Tapestry Application.
@@ -93,24 +97,19 @@ public class AppModule {
 	public static void bind(ServiceBinder binder) {
 
 		binder.bind(AppCore.class, AppCoreImpl.class);
-
-		// REST Services
-		// Uncomment to enable REST Example 
-		// binder.bind(PersonResource.class, PersonResourceJPA.class);
-
+		binder.bind(PersonResource.class, PersonResourceJPA.class);
 	}
 
 	/**
 	 * REST: Contribute the proxies services for Live Class Reloading
 	 * 
 	 * @param singletons
-	 * @param pageResource 
+	 * @param personResource
 	 */
-	// Uncomment to enable REST Example 
-	// @Contribute(javax.ws.rs.core.Application.class)
-	// public static void configureRestResources(Configuration<Object> singletons, PersonResource pageResource) {
-	// 	singletons.add(pageResource);
-	// }*/
+	@Contribute(javax.ws.rs.core.Application.class)
+	public static void configureRestResources(Configuration<Object> singletons, PersonResource personResource) {
+		singletons.add(personResource);
+	}
 
 	/**
 	 * REST: To support the @CommitAfter annotation, the *Resource classes are advised wrapping in a transaction
@@ -118,10 +117,10 @@ public class AppModule {
 	 * @param advisor
 	 * @param receiver
 	 */
-	// Uncomment to enable REST Example 
-	// @Match({ "*Resource", "*Handler" })
-	// public static void adviseTransactionally(JpaTransactionAdvisor advisor, MethodAdviceReceiver receiver) {
-	//	advisor.addTransactionCommitAdvice(receiver);
-	// }*/
+	// Uncomment to enable REST Example
+	@Match({ "*Resource" })
+	public static void adviseTransactionally(JpaTransactionAdvisor advisor, MethodAdviceReceiver receiver) {
+		advisor.addTransactionCommitAdvice(receiver);
+	}
 
 }

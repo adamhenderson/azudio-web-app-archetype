@@ -23,8 +23,12 @@
 		<div id="main" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="liveSplitters: true, design: 'headline', gutters: false">
 			<div id="app-header" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'top'">
 				<div style="float: right; color: #E5E5E5; font-size: 1.2em">
-					<i class="fa fa-cog"></i> System <i class="fa fa-caret-down"></i>&nbsp;
-					<i class="fa fa-user"></i> Lastname, Firstname <i class="fa fa-caret-down"></i>
+					<i class="fa fa-cog"></i>
+					System
+					<i class="fa fa-caret-down"></i>&nbsp;
+					<i class="fa fa-user"></i>
+					Lastname, Firstname
+					<i class="fa fa-caret-down"></i>
 				</div>
 				<h1>${application-name}</h1>
 			</div>
@@ -39,6 +43,7 @@
 						<ul>
 							<h4>General</h4>
 							<li>Single Page Application</li>
+							<li>Basic REST API Setup</li>
 							<h4>Client-Side</h4>
 							<li>Dojo 1.10.2;</li>
 							<ul>
@@ -56,20 +61,40 @@
 							<li>Tapestry JPA using Hibernate &amp; Configuration</li>
 							<li>EasyCriteria for simpler JPA queries</li>
 							<li>Maven directory layout</li>
-							<li>Fast running with RunJettyRun or the Eclipse Jetty Integration</li>
-							<h4>Optional</h4>
-							<li>REST through Tynamo tapestry-resteasy 5.4</li>
+							<li>Fast running with RunJettyRun or the Eclipse Jetty Integration (right-click, run as...)</li>
+							<li>Example REST Person API through the Tynamo tapestry-resteasy 5.4 integration</li>
+							<h4>Optional</h4>			
 							<li>Real-Time Support using the Atmosphere Framework through the Azudio tapestry-atmosphere integration</li>
 						</ul>
 					</p>
 				</div>
 				<!--  REST TAB -->
 				<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="title: 'REST Instructions', closable: false">
-				By default the REST features are disabled
+					REST API support is provided by the Tynamo RESTEasy integration so it is simple to create REST based APIs. This example application creates a simple REST API for the Person entity.
+					
+					<p>The Example REST Resources are implemented as Tapestry Services with an Interface and an Implementation, these live in the <em>application-package</em>.rest  package and will be auto-discovered. The implementation can be modified and the changes picked up by the live class reloading mechanism.</p>
+					
+					 Use the following link to create a new Person entity:
+					<t:eventlink event="newEntity">Create New Person Entity</t:eventlink>
+					<h2>Person API</h2>
+					<h3>GET /rest/people</h3>
+					<a href="/rest/people">/rest/people</a>
+					<p>Returns an array of all the Person entities currently stored</p>
+					<h3>POST /rest/people</h3>
+					<p>Creates a new Person entity with the given properties:</p>
+					<ul>
+						<li>name: String : The name of the person to create</li>
+					</ul>
+					<h3>PUT /rest/people/{id}</h3>
+					<p>Updates the Person entity represented by the {id} with the given properties:</p>
+					<ul>
+						<li>name: String : The name of the person to create</li>
+					</ul>
+					<h3>GET /rest/people/{id}</h3>
+					<p>Returns the Person entity represented by the {id}</p>
 				</div>
 				<!-- REALTIME TAB -->
-				<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="title: 'Real Time Instructions', closable: false">
-				By default the RealTime features are disabled
+				<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="title: 'Real Time Instructions', closable: false"> By default the RealTime features are disabled 
 				</div>
 				<!-- DND TAB -->
 				<div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="title: 'DnD', gutters: false, closable: false">
@@ -80,7 +105,7 @@
 						<div style="width: 50%; display: inline-block; vertical-align: top;">
 							<div style="padding-right:5px">
 								<h2>Source</h2>
-								<div data-dojo-type="dojo/dnd/Source" class="container"  style="border:1px dashed #ddd;min-height:20px;">
+								<div data-dojo-type="dojo/dnd/Source" class="container" style="border:1px dashed #ddd;min-height:20px;">
 									<div class="dojoDndItem">Wrist watch</div>
 									<div class="dojoDndItem">Life jacket</div>
 									<div class="dojoDndItem">Toy bulldozer</div>
