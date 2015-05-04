@@ -9,7 +9,7 @@ Rest
     console.debug("Rest Module Called");
 
     var peopleStore = new Rest({
-        target : '/rest/people/'
+        target : './rest/people/'
     });
 
     // Using the dstore api to get, search, create and update entities
