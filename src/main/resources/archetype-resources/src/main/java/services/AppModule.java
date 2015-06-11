@@ -59,6 +59,7 @@ public class AppModule {
 			 * 
 			 * @param unitInfo
 			 */
+		    @Override
 			public void configure(TapestryPersistenceUnitInfo unitInfo) {
 				unitInfo.persistenceProviderClassName("org.hibernate.ejb.HibernatePersistence");
 				unitInfo.transactionType(PersistenceUnitTransactionType.RESOURCE_LOCAL);
