@@ -26,6 +26,10 @@
 			<includes>
 				<include>**/*.xml</include>
 				<include>**/*.html</include>
+				<include>**/*.MF</include>
+				<include>**/*.json</include>
+				<include>**/*.js</include>
+				<include>**/*.css</include>
 			</includes>
 		</fileSet>
 		<fileSet filtered="true" encoding="UTF-8">
@@ -33,15 +37,6 @@
 			<includes>
 				<include>**/*.xml</include>
 				<include>**/*.properties</include>
-			</includes>
-		</fileSet>
-		<fileSet encoding="UTF-8">
-			<directory>src/main/webapp</directory>
-			<includes>
-				<include>**/*.MF</include>
-				<include>**/*.json</include>
-				<include>**/*.js</include>
-				<include>**/*.css</include>
 			</includes>
 		</fileSet>
 		<fileSet encoding="UTF-8" packaged="true" filtered="true">
@@ -59,7 +54,7 @@
 		<fileSet encoding="UTF-8">
 			<directory>.settings</directory>
 			<includes>
-				<include>**/*.prefs</include>
+				<include>**/*</include>
 			</includes>
 		</fileSet>
 		<fileSet filtered="true" encoding="UTF-8">
@@ -69,12 +64,9 @@
 				<include>.project</include>
 				<include>webdefault.xml</include>
 				<include>webdefault_readme.txt</include>
-			</includes>
-		</fileSet>
-		<fileSet encoding="UTF-8">
-			<directory></directory>
-			<includes>
+				<include>README.md</include>
 				<include>.gitignore</include>
+				<include>sonar-project.properties</include>
 			</includes>
 		</fileSet>
 	</fileSets>
