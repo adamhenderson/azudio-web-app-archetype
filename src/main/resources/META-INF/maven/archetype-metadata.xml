@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<archetype-descriptor xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd" name="azudio-web-app-archetype" xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<archetype-descriptor
+	xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd"
+	name="azudio-web-app-archetype"
+	xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<requiredProperties>
 		<requiredProperty key="application-name">
 			<defaultValue>Your Application</defaultValue>
@@ -11,17 +15,31 @@
 			<defaultValue>true</defaultValue>
 		</requiredProperty>
 		<requiredProperty key="atmosphere">
-			<defaultValue>true</defaultValue>
+			<defaultValue>false</defaultValue>
 		</requiredProperty>
 	</requiredProperties>
 	<fileSets>
-		<fileSet filtered="true" packaged="true" encoding="UTF-8">
+		<fileSet
+			filtered="true"
+			packaged="true"
+			encoding="UTF-8">
 			<directory>src/main/java</directory>
 			<includes>
 				<include>**/*.java</include>
 			</includes>
 		</fileSet>
-		<fileSet filtered="true" encoding="UTF-8">
+		<fileSet
+			filtered="true"
+			encoding="UTF-8">
+			<directory>src/main/resources</directory>
+			<includes>
+				<include>**/*.xml</include>
+				<include>**/*.properties</include>
+			</includes>
+		</fileSet>
+		<fileSet
+			filtered="true"
+			encoding="UTF-8">
 			<directory>src/main/webapp</directory>
 			<includes>
 				<include>**/*.xml</include>
@@ -32,20 +50,19 @@
 				<include>**/*.css</include>
 			</includes>
 		</fileSet>
-		<fileSet filtered="true" encoding="UTF-8">
-			<directory>src/main/resources</directory>
-			<includes>
-				<include>**/*.xml</include>
-				<include>**/*.properties</include>
-			</includes>
-		</fileSet>
-		<fileSet encoding="UTF-8" packaged="true" filtered="true">
+		<fileSet
+			filtered="true"
+			packaged="true"
+			encoding="UTF-8">
 			<directory>src/main/resources</directory>
 			<includes>
 				<include>**/*.tml</include>
 			</includes>
 		</fileSet>
-		<fileSet filtered="true" packaged="true" encoding="UTF-8">
+		<fileSet
+			filtered="true"
+			packaged="true"
+			encoding="UTF-8">
 			<directory>src/test/java</directory>
 			<includes>
 				<include>**/*.java</include>
@@ -57,7 +74,9 @@
 				<include>**/*</include>
 			</includes>
 		</fileSet>
-		<fileSet filtered="true" encoding="UTF-8">
+		<fileSet
+			filtered="true"
+			encoding="UTF-8">
 			<directory></directory>
 			<includes>
 				<include>.classpath</include>
