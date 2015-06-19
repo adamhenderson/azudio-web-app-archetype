@@ -22,36 +22,36 @@ import ${package}.entities.Person;
 @Path("/people")
 public interface PersonResource {
 
-	/**
-	 * Returns an array of all the Person entities currently stored
-	 */
-	@GET
-	@Produces({ "application/json" })
-	public abstract Response getAll(@QueryParam("sort") String sort);
+    /**
+     * Returns an array of all the Person entities currently stored
+     */
+    @GET
+    @Produces({ "application/json" })
+    public abstract Response getAll(@QueryParam("sort") String sort);
 
-	/**
-	 * Adds a new Person instance
-	 */
-	@POST
-	@Produces({ "application/json" })
-	@CommitAfter
-	public abstract Response addNew(Person person);
+    /**
+     * Adds a new Person instance
+     */
+    @POST
+    @Produces({ "application/json" })
+    @CommitAfter
+    public abstract Response addNew(Person person);
 
-	/**
-	 * Updates details about a Person
-	 */
-	@PUT
-	@Produces({ "application/json" })
-	@Path("{id}")
-	@CommitAfter
-	public abstract Response update(Person person);
+    /**
+     * Updates details about a Person
+     */
+    @PUT
+    @Produces({ "application/json" })
+    @Path("{id}")
+    @CommitAfter
+    public abstract Response update(Person person);
 
-	/**
-	 * Attempts to retrieve the Person represented by an Id
-	 */
-	@GET
-	@Path("{id}")
-	@Produces({ "application/json" })
-	public abstract Response find(@PathParam("id") Long id);
+    /**
+     * Attempts to retrieve the Person represented by an Id
+     */
+    @GET
+    @Path("{id}")
+    @Produces({ "application/json" })
+    public abstract Response find(@PathParam("id") Long id);
 
 }

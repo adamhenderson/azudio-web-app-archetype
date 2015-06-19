@@ -7,5 +7,5 @@ package ${package}.services;
  * AppCore Interface
  */
 public interface AppCore {
-	public String getApplicationName();
+    public String getApplicationName();
 }

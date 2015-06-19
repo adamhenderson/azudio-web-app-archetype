@@ -30,14 +30,14 @@ import ${package}.services.rest.PersonResourceJPA;
 @ImportModule({ /* Uncomment to enable Atmosphere: AtmosphereModule.class */})
 public class IntegrationModeModule {
 
-	private static final Logger log = LoggerFactory.getLogger(IntegrationModeModule.class);
+    private static final Logger log = LoggerFactory.getLogger(IntegrationModeModule.class);
 
-	@Contribute(EntityManagerSource.class)
-	public static void configurePersistenceUnitInfos(MappedConfiguration<String, PersistenceUnitConfigurer> cfg) {
+    @Contribute(EntityManagerSource.class)
+    public static void configurePersistenceUnitInfos(MappedConfiguration<String, PersistenceUnitConfigurer> cfg) {
 
-		log.debug("Config Persistence");
+        log.debug("Config Persistence");
 
-		PersistenceUnitConfigurer configurer = new PersistenceUnitConfigurer() {
+        PersistenceUnitConfigurer configurer = new PersistenceUnitConfigurer() {
 
             // /**
             // * MYSQL Implementation
@@ -54,34 +54,34 @@ public class IntegrationModeModule {
             // unitInfo.addProperty("hbm2ddl.auto", "create");
             // }
 
-			/**
-			 * Embedded HSQLDB Implementation
-			 * 
-			 * @param unitInfo
-			 */
-		    @Override
-			public void configure(TapestryPersistenceUnitInfo unitInfo) {
-				unitInfo.persistenceProviderClassName("org.hibernate.ejb.HibernatePersistence");
-				unitInfo.transactionType(PersistenceUnitTransactionType.RESOURCE_LOCAL);
-				unitInfo.addProperty("hibernate.connection.driver_class", "org.hsqldb.jdbcDriver");
-				unitInfo.addProperty("hibernate.connection.url", "jdbc:hsqldb:file:database/int-${artifactId}");
-				unitInfo.addProperty("hibernate.connection.username", "SA");
-				unitInfo.addProperty("hibernate.dialect", "org.hibernate.dialect.HSQLDialect");
-				unitInfo.addProperty("hibernate.hbm2ddl.auto", "create");
-			}
+            /**
+             * Embedded HSQLDB Implementation
+             * 
+             * @param unitInfo
+             */
+            @Override
+            public void configure(TapestryPersistenceUnitInfo unitInfo) {
+                unitInfo.persistenceProviderClassName("org.hibernate.ejb.HibernatePersistence");
+                unitInfo.transactionType(PersistenceUnitTransactionType.RESOURCE_LOCAL);
+                unitInfo.addProperty("hibernate.connection.driver_class", "org.hsqldb.jdbcDriver");
+                unitInfo.addProperty("hibernate.connection.url", "jdbc:hsqldb:file:database/int-${artifactId}");
+                unitInfo.addProperty("hibernate.connection.username", "SA");
+                unitInfo.addProperty("hibernate.dialect", "org.hibernate.dialect.HSQLDialect");
+                unitInfo.addProperty("hibernate.hbm2ddl.auto", "create");
+            }
 
-		};
+        };
 
-		cfg.add("${artifactId}", configurer);
-	}
+        cfg.add("${artifactId}", configurer);
+    }
 
-	/**
-	 * Contribute to the Application Defaults
-	 * 
-	 * @param configuration
-	 */
-	public static void contributeApplicationDefaults(MappedConfiguration<String, Object> configuration) {
-		configuration.add(SymbolConstants.PRODUCTION_MODE, false);
-	}
+    /**
+     * Contribute to the Application Defaults
+     * 
+     * @param configuration
+     */
+    public static void contributeApplicationDefaults(MappedConfiguration<String, Object> configuration) {
+        configuration.add(SymbolConstants.PRODUCTION_MODE, false);
+    }
 
 }

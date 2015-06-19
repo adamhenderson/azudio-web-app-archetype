@@ -8,8 +8,8 @@ package ${package}.services;
  */
 public class AppCoreImpl implements AppCore{
 
-	public String getApplicationName() {
-		return "${artifactId}";
-	}
+    public String getApplicationName() {
+        return "${artifactId}";
+    }
 
 }

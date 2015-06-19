@@ -26,51 +26,51 @@ import com.uaihebert.factory.EasyCriteriaFactory;
  */
 public class Index {
 
-	@Inject
-	private Logger log;
+    @Inject
+    private Logger log;
 
-	@Property
-	@Inject
-	private AppCore appCore;
+    @Property
+    @Inject
+    private AppCore appCore;
 
-	@Inject
-	private EntityManager persistence;
+    @Inject
+    private EntityManager persistence;
 
-	public String getApplicationName() {
-		return appCore.getApplicationName();
-	}
+    public String getApplicationName() {
+        return appCore.getApplicationName();
+    }
 
-	@Inject
-	private RequestGlobals requestGlobals;
+    @Inject
+    private RequestGlobals requestGlobals;
 
-	//@Inject
-	//private AtmosphereFramework framework;
+    //@Inject
+    //private AtmosphereFramework framework;
 
-	@CommitAfter
-	public void onNewEntity() {
+    @CommitAfter
+    public void onNewEntity() {
 
-		Person p = new Person();
-		p.setName("Test: " + new Date().getTime());
+        Person p = new Person();
+        p.setName("Test: " + new Date().getTime());
 
-		// Save the new Person instance
-		persistence.persist(p);
+        // Save the new Person instance
+        persistence.persist(p);
 
-		// Now broadcast that new Person to all subscribers
-		//Broadcaster broadcaster = framework.getAtmosphereConfig().getBroadcasterFactory().lookup("/tapestryatmospherehandlerexample1");
-		//broadcaster.broadcast(p);
-	}
+        // Now broadcast that new Person to all subscribers
+        //Broadcaster broadcaster = framework.getAtmosphereConfig().getBroadcasterFactory().lookup("/tapestryatmospherehandlerexample1");
+        //broadcaster.broadcast(p);
+    }
 
-	public List<Person> getPeople() {
-		return EasyCriteriaFactory.createQueryCriteria(persistence, Person.class).getResultList();
-	}
+    public List<Person> getPeople() {
+        return EasyCriteriaFactory.createQueryCriteria(persistence, Person.class).getResultList();
+    }
 
-	@Property
-	private Person p;
+    @Property
+    private Person p;
 
-	@CommitAfter
-	public void onClearAll() {
-		persistence.createQuery("delete from Person").executeUpdate();
+    @CommitAfter
+    public void onClearAll() {
+        persistence.createQuery("delete from Person").executeUpdate();
 
-	}
+    }
 
 }

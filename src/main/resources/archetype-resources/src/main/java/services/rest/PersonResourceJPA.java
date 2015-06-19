@@ -25,89 +25,89 @@ import com.uaihebert.model.EasyCriteria;
  */
 public class PersonResourceJPA implements PersonResource {
 
-	private EntityManager persistenceService;
+    private EntityManager persistenceService;
 
-	//private AtmosphereFramework framework;
+    //private AtmosphereFramework framework;
 
-	private Logger log;
+    private Logger log;
 
-	public PersonResourceJPA(EntityManager persistenceService, Logger log) {
-		this.persistenceService = persistenceService;
-		this.log = log;
-	}
-	
-//	public PersonResourceJPA(AtmosphereFramework framework, EntityManager persistenceService, Logger log) {
-//		this.framework = framework;
-//		this.persistenceService = persistenceService;
-//		this.log = log;
-//	}
+    public PersonResourceJPA(EntityManager persistenceService, Logger log) {
+        this.persistenceService = persistenceService;
+        this.log = log;
+    }
+    
+//    public PersonResourceJPA(AtmosphereFramework framework, EntityManager persistenceService, Logger log) {
+//        this.framework = framework;
+//        this.persistenceService = persistenceService;
+//        this.log = log;
+//    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see ${package}.rest.PersonResource${symbol_pound}getAll(java.lang.String)
-	 */
-	@Log
-	public Response getAll(String sort) {
-		log.debug(sort);
+    /*
+     * (non-Javadoc)
+     * 
+     * @see ${package}.rest.PersonResource${symbol_pound}getAll(java.lang.String)
+     */
+    @Log
+    public Response getAll(String sort) {
+        log.debug(sort);
 
-		EasyCriteria<Person> easyCriteria = EasyCriteriaFactory.createQueryCriteria(persistenceService, Person.class);
+        EasyCriteria<Person> easyCriteria = EasyCriteriaFactory.createQueryCriteria(persistenceService, Person.class);
 
-		if (sort != null) {
-			if (sort.startsWith("-")) {
-				easyCriteria.orderByDesc(sort.substring(1));
-			} else {
-				easyCriteria.orderByAsc(sort.substring(1));
-			}
+        if (sort != null) {
+            if (sort.startsWith("-")) {
+                easyCriteria.orderByDesc(sort.substring(1));
+            } else {
+                easyCriteria.orderByAsc(sort.substring(1));
+            }
 
-		}
-		return Response.ok(easyCriteria.getResultList()).build();
-	}
+        }
+        return Response.ok(easyCriteria.getResultList()).build();
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see ${package}.rest.PersonResource${symbol_pound}addNew(${package}.entities.Person)
-	 */
-	public Response addNew(Person person) {
+    /*
+     * (non-Javadoc)
+     * 
+     * @see ${package}.rest.PersonResource${symbol_pound}addNew(${package}.entities.Person)
+     */
+    public Response addNew(Person person) {
 
-		log.debug("New Person id:" + person.getId());
-		persistenceService.persist(person);
-		log.debug("New Person id:" + person.getId());
+        log.debug("New Person id:" + person.getId());
+        persistenceService.persist(person);
+        log.debug("New Person id:" + person.getId());
 
-		//framework.getBroadcasterFactory().lookup("/tapestryatmospherehandlerexample1").broadcast("message=" + page.getName());
+        //framework.getBroadcasterFactory().lookup("/tapestryatmospherehandlerexample1").broadcast("message=" + page.getName());
 
-		return Response.ok(person).link("/rest/people/" + person.getId(), "self").status(201).build();
-	}
-	
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see ${package}.rest.PersonResource${symbol_pound}update(${package}.entities.Person)
-	 */
-	public Response update(Person person) {
-		log.debug("Update Person id:" + person.getId());
-		persistenceService.merge(person);
-		log.debug("Update Person id:" + person.getId());
+        return Response.ok(person).link("/rest/people/" + person.getId(), "self").status(201).build();
+    }
+    
+    /*
+     * (non-Javadoc)
+     * 
+     * @see ${package}.rest.PersonResource${symbol_pound}update(${package}.entities.Person)
+     */
+    public Response update(Person person) {
+        log.debug("Update Person id:" + person.getId());
+        persistenceService.merge(person);
+        log.debug("Update Person id:" + person.getId());
 
-		//framework.getBroadcasterFactory().lookup("/tapestryatmospherehandlerexample1").broadcast("message=" + page.getName());
+        //framework.getBroadcasterFactory().lookup("/tapestryatmospherehandlerexample1").broadcast("message=" + page.getName());
 
-		return Response.ok(person).build();
-	}
+        return Response.ok(person).build();
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see ${package}.rest.PersonResource${symbol_pound}find(java.lang.Long)
-	 */
-	@Log
-	public Response find(Long id) {
-		Person person = (Person) persistenceService.find(Person.class, id);
-		if (person == null) {
-			throw new WebApplicationException(Response.Status.NOT_FOUND);
-		}
-		return Response.ok(person).build();
-	}
+    /*
+     * (non-Javadoc)
+     * 
+     * @see ${package}.rest.PersonResource${symbol_pound}find(java.lang.Long)
+     */
+    @Log
+    public Response find(Long id) {
+        Person person = (Person) persistenceService.find(Person.class, id);
+        if (person == null) {
+            throw new WebApplicationException(Response.Status.NOT_FOUND);
+        }
+        return Response.ok(person).build();
+    }
 
 
 

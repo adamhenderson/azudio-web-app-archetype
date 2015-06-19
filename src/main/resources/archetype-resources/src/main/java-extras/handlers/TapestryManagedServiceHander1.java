@@ -17,26 +17,26 @@ import org.slf4j.LoggerFactory;
 @ManagedService(path = "/push/tapestryatmospherehandlerexample1")
 public class TapestryManagedServiceHander1 {
 
-	private final Logger logger = LoggerFactory.getLogger(TapestryManagedServiceHander1.class);
+    private final Logger logger = LoggerFactory.getLogger(TapestryManagedServiceHander1.class);
 
-	@Ready
-	public void onReady(final AtmosphereResource r) {
-		logger.info("Browser {} connected.", r.uuid());
-	}
+    @Ready
+    public void onReady(final AtmosphereResource r) {
+        logger.info("Browser {} connected.", r.uuid());
+    }
 
-	@Disconnect
-	public void onDisconnect(AtmosphereResourceEvent event) {
-		if (event.isCancelled()) {
-			logger.info("Browser {} unexpectedly disconnected", event.getResource().uuid());
-		} else if (event.isClosedByClient()) {
-			logger.info("Browser {} closed the connection", event.getResource().uuid());
-		}
-	}
+    @Disconnect
+    public void onDisconnect(AtmosphereResourceEvent event) {
+        if (event.isCancelled()) {
+            logger.info("Browser {} unexpectedly disconnected", event.getResource().uuid());
+        } else if (event.isClosedByClient()) {
+            logger.info("Browser {} closed the connection", event.getResource().uuid());
+        }
+    }
 
-	@org.atmosphere.config.service.Message
-	public Object onMessage(Object message) throws IOException {
-		logger.info("{} just send {}", message.toString());
-		return message;
-	}
+    @org.atmosphere.config.service.Message
+    public Object onMessage(Object message) throws IOException {
+        logger.info("{} just send {}", message.toString());
+        return message;
+    }
 
 }
