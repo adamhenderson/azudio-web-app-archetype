@@ -12,6 +12,7 @@ import org.apache.tapestry5.annotations.Log;
 import org.slf4j.Logger;
 
 import ${package}.entities.Person;
+
 import com.uaihebert.factory.EasyCriteriaFactory;
 import com.uaihebert.model.EasyCriteria;
 
@@ -47,7 +48,7 @@ public class PersonResourceJPA implements PersonResource {
      * 
      * @see ${package}.rest.PersonResource${symbol_pound}getAll(java.lang.String)
      */
-    @Log
+    @Override
     public Response getAll(String sort) {
         log.debug(sort);
 
@@ -69,6 +70,7 @@ public class PersonResourceJPA implements PersonResource {
      * 
      * @see ${package}.rest.PersonResource${symbol_pound}addNew(${package}.entities.Person)
      */
+    @Override
     public Response addNew(Person person) {
 
         log.debug("New Person id:" + person.getId());
@@ -85,6 +87,7 @@ public class PersonResourceJPA implements PersonResource {
      * 
      * @see ${package}.rest.PersonResource${symbol_pound}update(${package}.entities.Person)
      */
+    @Override
     public Response update(Person person) {
         log.debug("Update Person id:" + person.getId());
         persistenceService.merge(person);
@@ -100,7 +103,7 @@ public class PersonResourceJPA implements PersonResource {
      * 
      * @see ${package}.rest.PersonResource${symbol_pound}find(java.lang.Long)
      */
-    @Log
+    @Override
     public Response find(Long id) {
         Person person = (Person) persistenceService.find(Person.class, id);
         if (person == null) {
@@ -108,7 +111,5 @@ public class PersonResourceJPA implements PersonResource {
         }
         return Response.ok(person).build();
     }
-
-
 
 }

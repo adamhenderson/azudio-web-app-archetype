@@ -8,6 +8,7 @@ package ${package}.services;
  */
 public class AppCoreImpl implements AppCore{
 
+    @Override
     public String getApplicationName() {
         return "${artifactId}";
     }
