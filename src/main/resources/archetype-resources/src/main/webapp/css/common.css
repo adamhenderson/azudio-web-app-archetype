@@ -38,7 +38,7 @@ html, body {
 	width: 300px;
 }
 
-#loaderInner {
+#loader-inner {
 	padding: 0;
 	position: absolute;
 	margin-left: auto;

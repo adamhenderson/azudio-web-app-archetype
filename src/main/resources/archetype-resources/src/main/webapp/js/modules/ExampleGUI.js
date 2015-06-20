@@ -7,7 +7,7 @@ OnDemandGrid, Memory, Tree, ObjectStoreModel, ObjectStore, ContentPane, ExampleG
     // Plug-in the Example GUI into the mainTabContainer
     ready(function() {
 
-        var tc = registry.byId("mainTabContainer");
+        var tc = registry.byId("main-tab-container");
 
         tc.addChild(new ContentPane({
             title : "Examples GUI",
@@ -35,7 +35,7 @@ OnDemandGrid, Memory, Tree, ObjectStoreModel, ObjectStore, ContentPane, ExampleG
                 last : 'Last Name',
                 age : 'Age'
             }
-        }, "exampleGUITab_grid");
+        }, "example-gui-tab-grid");
 
         exampleGUITab_grid.renderArray([ {
             first : 'Bob',
@@ -187,7 +187,7 @@ OnDemandGrid, Memory, Tree, ObjectStoreModel, ObjectStore, ContentPane, ExampleG
         // Create the Tree and start it up
        var tree = new Tree({
             model : objectStoreModel
-        }, "exampleGUITab_tree");
+        }, "example-gui-tab-tree");
         tree.startup();
 
     }

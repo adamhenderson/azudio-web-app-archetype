@@ -11,13 +11,13 @@ var dojoConfig = {
     // External Libraries on CDNs
     {
         name : 'handlebars',
-        location : 'http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0'
+        location : 'https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.amd.min.js'
     }, {
         name : 'dgrid',
         location : '//cdn.rawgit.com/SitePen/dgrid/v0.4.0'
     }, {
         name : 'dstore',
-        location : '//cdn.rawgit.com/SitePen/dstore/v1.0.1'
+        location : '//cdn.rawgit.com/SitePen/dstore/v1.1.0'
     }, {
         name : 'xstyle',
         location : '//cdn.rawgit.com/kriszyp/xstyle/v0.3.1'
