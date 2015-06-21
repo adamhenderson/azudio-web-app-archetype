@@ -8,7 +8,6 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import org.apache.tapestry5.annotations.BeginRender;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.jpa.annotations.CommitAfter;

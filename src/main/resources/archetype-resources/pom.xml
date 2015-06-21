@@ -78,6 +78,13 @@
 			<artifactId>tapestry-webresources</artifactId>
 			<version>${tapestry-release-version}</version>
 		</dependency>-->
+		<!-- TAPESTRY TEST -->
+		<dependency>
+			<groupId>org.apache.tapestry</groupId>
+			<artifactId>tapestry-test</artifactId>
+			<version>${tapestry-release-version}</version>
+			<scope>test</scope>
+		</dependency>
 		<!-- LOGGING -->
 		<dependency>
 			<groupId>org.slf4j</groupId>

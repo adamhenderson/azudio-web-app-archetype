@@ -7,7 +7,6 @@ import javax.persistence.EntityManager;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 
-import org.apache.tapestry5.annotations.Log;
 //import org.atmosphere.cpr.AtmosphereFramework;
 import org.slf4j.Logger;
 

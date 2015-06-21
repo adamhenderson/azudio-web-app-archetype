@@ -6,7 +6,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.azudio</groupId>
 	<artifactId>azudio-web-app-archetype</artifactId>
-	<version>2.0.0-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>maven-archetype</packaging>
 	<name>This application template is designed to get you up to speed as quickly as possible and to provide examples of using various technologies ready for you to modify.</name>
 	<build>

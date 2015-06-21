@@ -3,8 +3,6 @@
 #set( $symbol_escape = '\' )
 package ${package}.services;
 
-import javax.persistence.spi.PersistenceUnitTransactionType;
-
 import org.apache.tapestry5.SymbolConstants;
 import org.apache.tapestry5.ioc.Configuration;
 import org.apache.tapestry5.ioc.IOCSymbols;
@@ -14,12 +12,8 @@ import org.apache.tapestry5.ioc.ServiceBinder;
 import org.apache.tapestry5.ioc.annotations.Contribute;
 import org.apache.tapestry5.ioc.annotations.ImportModule;
 import org.apache.tapestry5.ioc.annotations.Match;
-import org.apache.tapestry5.jpa.EntityManagerSource;
 import org.apache.tapestry5.jpa.JpaTransactionAdvisor;
-import org.apache.tapestry5.jpa.PersistenceUnitConfigurer;
-import org.apache.tapestry5.jpa.TapestryPersistenceUnitInfo;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 //import com.azudio.tapestry.atmosphere.module.AtmosphereModule;
 import ${package}.services.rest.PersonResource;
 import ${package}.services.rest.PersonResourceJPA;
@@ -29,8 +23,6 @@ import ${package}.services.rest.PersonResourceJPA;
  */
 @ImportModule({ /* Uncomment to enable Atmosphere: AtmosphereModule.class */})
 public class AppModule {
-
-    private static final Logger log = LoggerFactory.getLogger(AppModule.class);
 
     // Contributions to EntityManagerSource are in the [MODE]ModeModule.java files
     // IntegrationModeModule.java
