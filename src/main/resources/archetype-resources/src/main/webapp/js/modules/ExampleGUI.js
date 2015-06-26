@@ -4,8 +4,6 @@ define([
 
 OnDemandGrid, Memory, Tree, ObjectStoreModel, ObjectStore, ContentPane, ExampleGUI, registry, ready) {
 
-    console.log("xxx");
-    
     // Plug-in the Example GUI into the mainTabContainer
     ready(function() {
 
@@ -187,12 +185,11 @@ OnDemandGrid, Memory, Tree, ObjectStoreModel, ObjectStore, ContentPane, ExampleG
         });
 
         // Create the Tree and start it up
-       var tree = new Tree({
+        var tree = new Tree({
             model : objectStoreModel
         }, "example-gui-tab-tree");
         tree.startup();
 
     }
-
 
 });
