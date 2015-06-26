@@ -4,6 +4,8 @@ define([
 
 OnDemandGrid, Memory, Tree, ObjectStoreModel, ObjectStore, ContentPane, ExampleGUI, registry, ready) {
 
+    console.log("xxx");
+    
     // Plug-in the Example GUI into the mainTabContainer
     ready(function() {
 
