@@ -1,7 +1,7 @@
 #set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
-package ${package}.services;
+package ${package}.modules;
 
 import javax.persistence.spi.PersistenceUnitTransactionType;
 
@@ -19,9 +19,9 @@ import org.slf4j.LoggerFactory;
  * Module to configure your Tapestry Application.
  */
 @ImportModule({ /* Uncomment to enable Atmosphere: AtmosphereModule.class */})
-public class ProductionModeModule {
+public class IntegrationModeModule {
 
-    private static final Logger log = LoggerFactory.getLogger(ProductionModeModule.class);
+    private static final Logger log = LoggerFactory.getLogger(IntegrationModeModule.class);
 
     @Contribute(EntityManagerSource.class)
     public static void configurePersistenceUnitInfos(MappedConfiguration<String, PersistenceUnitConfigurer> cfg) {
@@ -55,7 +55,7 @@ public class ProductionModeModule {
                 unitInfo.persistenceProviderClassName("org.hibernate.ejb.HibernatePersistence");
                 unitInfo.transactionType(PersistenceUnitTransactionType.RESOURCE_LOCAL);
                 unitInfo.addProperty("hibernate.connection.driver_class", "org.hsqldb.jdbcDriver");
-                unitInfo.addProperty("hibernate.connection.url", "jdbc:hsqldb:file:database/${artifactId}");
+                unitInfo.addProperty("hibernate.connection.url", "jdbc:hsqldb:file:database/int-${artifactId}");
                 unitInfo.addProperty("hibernate.connection.username", "SA");
                 unitInfo.addProperty("hibernate.dialect", "org.hibernate.dialect.HSQLDialect");
                 unitInfo.addProperty("hibernate.hbm2ddl.auto", "create");
@@ -72,7 +72,7 @@ public class ProductionModeModule {
      * @param configuration
      */
     public static void contributeApplicationDefaults(MappedConfiguration<String, Object> configuration) {
-        configuration.add(SymbolConstants.PRODUCTION_MODE, true);
+        configuration.add(SymbolConstants.PRODUCTION_MODE, false);
     }
 
 }

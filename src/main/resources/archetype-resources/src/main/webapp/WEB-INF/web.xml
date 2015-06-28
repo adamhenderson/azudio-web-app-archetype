@@ -15,15 +15,15 @@
 	</context-param>
 	<context-param>
 		<param-name>tapestry.production-modules</param-name>
-		<param-value>${package}.services.ProductionModeModule</param-value>
+		<param-value>${package}.modules.ProductionModeModule</param-value>
 	</context-param>
 	<context-param>
 		<param-name>tapestry.uat-modules</param-name>
-		<param-value>${package}.services.UatModeModule</param-value>
+		<param-value>${package}.modules.UatModeModule</param-value>
 	</context-param>
 	<context-param>
 		<param-name>tapestry.integration-modules</param-name>
-		<param-value>${package}.services.IntegrationModeModule</param-value>
+		<param-value>${package}.modules.IntegrationModeModule</param-value>
 	</context-param>
 	<filter>
 		<filter-name>app</filter-name>
