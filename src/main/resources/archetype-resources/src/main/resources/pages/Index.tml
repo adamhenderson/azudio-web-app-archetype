@@ -84,7 +84,7 @@
 							<li>Single Page Application</li>
 							<li>Basic REST API Setup</li>
 							<h4>Client-Side</h4>
-							<li>Dojo 1.10.2;</li>
+							<li>Dojo 1.10.4;</li>
 							<ul>
 								<li>Integration with Tapestry</li>
 								<li>Configuration</li>
