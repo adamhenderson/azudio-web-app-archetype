@@ -12,3 +12,12 @@
 .selected-element {
 	background-color: rgb(252, 248, 227) !important;
 }
+
+/* Make the columns for first/last name wider */
+#person-grid.dgrid .field-id {
+	width: 50px;
+}
+
+#person-grid.dgrid .field-name {
+	width: auto;
+}
