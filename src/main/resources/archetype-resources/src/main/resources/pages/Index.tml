@@ -133,6 +133,8 @@
 					<ul>
 						<li>name: String : The name of the person to create</li>
 					</ul>
+					<button id="updatePerson1Button">Update name of Person 1 via store</button>
+					<button id="updateSelectedPersonButton">Update name of selected item</button>
 					<h3>GET /rest/people/{id}</h3>
 					<p>Returns the Person entity represented by the {id}</p>
 					<a href="/rest/people/1">Test Get Person 1</a>

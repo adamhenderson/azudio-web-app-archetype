@@ -25,12 +25,12 @@ import com.uaihebert.model.EasyCriteria;
  */
 public class PersonResourceJPA implements PersonResource {
 
+    private Logger log;
+
     private EntityManager persistenceService;
 
     //private AtmosphereFramework framework;
-
-    private Logger log;
-
+  
     public PersonResourceJPA(EntityManager persistenceService, Logger log) {
         this.persistenceService = persistenceService;
         this.log = log;
@@ -45,10 +45,10 @@ public class PersonResourceJPA implements PersonResource {
     /*
      * (non-Javadoc)
      * 
-     * @see ${package}.rest.PersonResource${symbol_pound}getAll(java.lang.String)
+     * @see ${package}.rest.PersonResource${symbol_pound}get(java.lang.String)
      */
     @Override
-    public Response getAll(String sort) {
+    public Response get(String sort) {
         log.debug(sort);
 
         EasyCriteria<Person> easyCriteria = EasyCriteriaFactory.createQueryCriteria(persistenceService, Person.class);

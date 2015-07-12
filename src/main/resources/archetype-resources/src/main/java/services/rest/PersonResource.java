@@ -23,11 +23,11 @@ import ${package}.entities.Person;
 public interface PersonResource {
 
     /**
-     * Returns an array of all the Person entities currently stored
+     * Returns an array of all the Person entities currently stored. Extra QueryParams can be added to enable filtering. Currently the 'sort' parameter will indicate what field the returned results will be sorted by.
      */
     @GET
     @Produces({ "application/json" })
-    public abstract Response getAll(@QueryParam("sort") String sort);
+    public abstract Response get(@QueryParam("sort") String sort);
 
     /**
      * Adds a new Person instance

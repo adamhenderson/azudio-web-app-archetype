@@ -50,11 +50,13 @@ public class AppModule {
      */
     public static void bind(ServiceBinder binder) {
         binder.bind(AppCore.class, AppCoreImpl.class);
+        
+        // Rest Services
         binder.bind(PersonResource.class, PersonResourceJPA.class);
     }
 
     /**
-     * REST: Contribute the proxies services for Live Class Reloading
+     * REST: Contribute the proxies services for Live Class Reloading. (Not using Tynamo Auto-Discovery)
      * 
      * @param singletons
      * @param personResource
@@ -65,12 +67,11 @@ public class AppModule {
     }
 
     /**
-     * REST: To support the @CommitAfter annotation, the *Resource classes are advised wrapping in a transaction
+     * REST: To support the @CommitAfter annotation, the *Resource classes are advised wrapping in a transaction.  (Not using Tynamo Auto-Discovery). JPA Implementation.
      * 
      * @param advisor
      * @param receiver
      */
-    // Uncomment to enable REST Example
     @Match({ "*Resource" })
     public static void adviseTransactionally(JpaTransactionAdvisor advisor, MethodAdviceReceiver receiver) {
         advisor.addTransactionCommitAdvice(receiver);

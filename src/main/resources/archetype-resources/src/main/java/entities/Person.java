@@ -11,7 +11,9 @@ import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * Example Entity
+ * Example Person Entity
+ * 
+ * The entity is annotated with a XMLRootElement so it can be serialised for REST interaction.
  * 
  */
 @Entity
