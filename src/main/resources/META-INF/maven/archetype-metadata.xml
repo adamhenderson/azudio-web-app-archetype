@@ -35,6 +35,7 @@
 			<includes>
 				<include>**/*.xml</include>
 				<include>**/*.properties</include>
+				<include>**/*.launch</include>
 			</includes>
 		</fileSet>
 		<fileSet
