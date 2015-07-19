@@ -6,7 +6,7 @@ Memory, Rest, SimpleQuery, Trackable, Cache, declare, on, dom, request, OnDemand
 
 ) {
 
-    console.debug("Rest Module Called", peopleStore);
+    console.debug("Rest Module Called");
 
     dom.byId("updateSelectedPersonButton").disabled = true;
 
@@ -16,21 +16,21 @@ Memory, Rest, SimpleQuery, Trackable, Cache, declare, on, dom, request, OnDemand
     // peopleStore.fetch();
 
     // Get an entity with an id of '1'
-    peopleStore.get("1").then(function(person) {
-
-        console.debug("Got Person 1", person);
-
-    }, function(err) {
-
-        console.error("Could not get Person 1 - oh well at least it was handled");
-
-    });
+    // peopleStore.get("1").then(function(person) {
+    //
+    // console.debug("Got Person 1", person);
+    //
+    // }, function(err) {
+    //
+    // console.error("Could not get Person 1 - oh well at least it was handled");
+    //
+    //    });
 
     // Demonstrate attempting to get a non-existent person to show error handling
-    peopleStore.get("100000").then(function(person) {
-    }, function(err) {
-        console.error("Could not get Person 100000 - oh well at least it was handled");
-    });
+    // peopleStore.get("100000").then(function(person) {
+    // }, function(err) {
+    // console.error("Could not get Person 100000 - oh well at least it was handled");
+    //    });
 
     // Wire up the button to add a new person via the rest store
     on(dom.byId("addPersonButton"), "click", function(evt) {
@@ -136,6 +136,10 @@ Memory, Rest, SimpleQuery, Trackable, Cache, declare, on, dom, request, OnDemand
 
     });
 
+    
+    // -- Application logic for handling the updateSelectedPersonButton enablement state
+    // Separate event handlers are used to provide a level of separation of concerns and to not to overload the previous event handler functions.
+    
     // When a row in the grid is selected enable the update button
     personGrid.on("dgrid-select", function(event) {
 
