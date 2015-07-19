@@ -15,13 +15,14 @@ import org.apache.tapestry5.ioc.annotations.Match;
 import org.apache.tapestry5.jpa.JpaTransactionAdvisor;
 
 //import com.azudio.tapestry.atmosphere.module.AtmosphereModule;
+import ${package}.modules.KillJSModule;
 import ${package}.services.rest.PersonResource;
 import ${package}.services.rest.PersonResourceJPA;
 
 /**
  * Module to configure your Tapestry Application.
  */
-@ImportModule({ /* Uncomment to enable Atmosphere: AtmosphereModule.class */})
+@ImportModule({ KillJSModule.class /* Uncomment to enable Atmosphere: AtmosphereModule.class */})
 public class AppModule {
 
     // Contributions to EntityManagerSource are in the [MODE]ModeModule.java files
