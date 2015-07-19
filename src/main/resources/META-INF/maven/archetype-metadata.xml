@@ -35,7 +35,6 @@
 			<includes>
 				<include>**/*.xml</include>
 				<include>**/*.properties</include>
-				<include>**/*.launch</include>
 			</includes>
 		</fileSet>
 		<fileSet
@@ -82,11 +81,12 @@
 			<includes>
 				<include>.classpath</include>
 				<include>.project</include>
+				<include>.gitignore</include>
+				<include>README.md</include>
 				<include>webdefault.xml</include>
 				<include>webdefault_readme.txt</include>
-				<include>README.md</include>
-				<include>.gitignore</include>
 				<include>sonar-project.properties</include>
+				<include>*.launch</include>
 			</includes>
 		</fileSet>
 	</fileSets>
