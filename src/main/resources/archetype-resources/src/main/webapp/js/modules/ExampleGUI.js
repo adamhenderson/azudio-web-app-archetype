@@ -9,14 +9,11 @@ OnDemandGrid, Memory, Tree, ObjectStoreModel, ObjectStore, ContentPane, ExampleG
 
         var tc = registry.byId("main-tab-container");
 
-        tc.addChild(new ContentPane({
-            title : "Examples GUI",
-            gutters : false,
-            content : ExampleGUI,
-            style : {
-                padding : 0
-            }
-        }));
+        if(tc==null){
+            console.error("Could not load the Example GUI, because the TabContainer 'main-tab-container' could not be found.")
+            return;
+        }
+       
 
         // Initialise
         init();
@@ -28,6 +25,15 @@ OnDemandGrid, Memory, Tree, ObjectStoreModel, ObjectStore, ContentPane, ExampleG
      */
     function init() {
 
+        registry.byId("main-tab-container").addChild(new ContentPane({
+            title : "Examples GUI",
+            gutters : false,
+            content : ExampleGUI,
+            style : {
+                padding : 0
+            }
+        }));
+        
         // Example GUI Tab - Grids and Tree
         var exampleGUITab_grid = new OnDemandGrid({
             columns : {
