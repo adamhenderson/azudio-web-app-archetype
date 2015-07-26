@@ -108,25 +108,23 @@
 						<h2>Drag'n'Drop Example</h2>
 						<p>This page is an example of how Dojo D'n'D can be used.</p>
 						<p>Drag items from the left box into the areas on the right.</p>
-						<div style="width: 50%; display: inline-block; vertical-align: top;">
-							<div style="padding-right:5px">
-								<h2>Source</h2>
-								<div data-dojo-type="dojo/dnd/Source" class="container" style="border:1px dashed #ddd;min-height:20px;">
+						
+						
+					</div>
+					<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="splitter:true, region: 'left'" style="width:50%">
+					<h2>Source</h2>
+								<div data-dojo-type="dojo/dnd/Source" class="container"  style="border:1px dashed #ddd;min-height:20px;">
 									<div class="dojoDndItem">Wrist watch</div>
 									<div class="dojoDndItem">Life jacket</div>
 									<div class="dojoDndItem">Toy bulldozer</div>
 									<div class="dojoDndItem">Vintage microphone</div>
 									<div class="dojoDndItem">TIE fighter</div>
 								</div>
-							</div>
-						</div>
-						<div style="width: 50%; display: inline-block; vertical-align: top;">
-							<div style="padding-left:5px">
-								<h2>Target</h2>
+					</div>
+					<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'center'">
+					<h2>Target</h2>
 								<div data-dojo-type="dojo/dnd/Source" class="container" style="border:1px dashed #ddd;min-height:20px;">
 								</div>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>
