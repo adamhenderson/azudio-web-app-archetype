@@ -1,12 +1,12 @@
 var dojoConfig = {
     async : true,
     parseOnLoad : true,
-    baseUrl: './',
+    baseUrl : '.',
     packages : [
     // Application Modules
     {
         name : "app",
-        location : "./js/modules"
+        location : "/js/app"
     },
     // External Libraries on CDNs
     {

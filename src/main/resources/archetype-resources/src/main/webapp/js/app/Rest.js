@@ -1,8 +1,8 @@
 require([
 
-"dstore/Memory", "dstore/Rest", "dstore/SimpleQuery", "dstore/Trackable", "dstore/Cache", "dojo/_base/declare", "dojo/on", "dojo/dom", "dojo/request", "dgrid/OnDemandGrid", "dgrid/Keyboard", "dgrid/Selection", "app/PeopleStore", "dojo/domReady!" ], function(
+"dstore/Memory", "dstore/Rest", "dstore/SimpleQuery", "dstore/Trackable", "dstore/Cache", "dojo/_base/declare", "dojo/on", "dojo/dom", "dojo/request", "dgrid/OnDemandGrid", "dgrid/Keyboard", "dgrid/Selection", "dojo/domReady!" ], function(
 
-Memory, Rest, SimpleQuery, Trackable, Cache, declare, on, dom, request, OnDemandGrid, Keyboard, Selection, peopleStore
+Memory, Rest, SimpleQuery, Trackable, Cache, declare, on, dom, request, OnDemandGrid, Keyboard, Selection
 
 ) {
 
@@ -10,27 +10,44 @@ Memory, Rest, SimpleQuery, Trackable, Cache, declare, on, dom, request, OnDemand
 
     dom.byId("updateSelectedPersonButton").disabled = true;
 
+    // Define a trackable Memory store
+    var TrackableMemStore = declare([ Memory, Trackable ]);
+
+    // Define a caching Rest store
+    var CachingRestStore = declare([ Rest, Cache, SimpleQuery, Trackable ]);
+
+    // Instantiate a Caching Rest Store that uses a Trackable Memory store as the caching store
+
+    // This setup means that any writeable actions on this store will go to the server via rest,
+    // any read actions will hit the cache first and if misses, will then perform a GET request.
+    // The OnDemandGrid will be wired up to the cachingstore to reflect changes.
+    var peopleStore = new CachingRestStore({
+        target : "./rest/people/",
+        sortParam : "sort",
+        cachingStore : new TrackableMemStore()
+    });
+
     // Using the dstore api to get, search, create and update entities
 
     // Load all items into the store
-    // peopleStore.fetch();
+    peopleStore.fetch();
 
     // Get an entity with an id of '1'
-    // peopleStore.get("1").then(function(person) {
-    //
-    // console.debug("Got Person 1", person);
-    //
-    // }, function(err) {
-    //
-    // console.error("Could not get Person 1 - oh well at least it was handled");
-    //
-    //    });
+    peopleStore.get("1").then(function(person) {
+
+        console.debug("Get Person 1 (should be a XHR)", person);
+
+    }, function(err) {
+
+        console.error("Could not get Person 1 - oh well at least it was handled");
+
+    });
 
     // Demonstrate attempting to get a non-existent person to show error handling
-    // peopleStore.get("100000").then(function(person) {
-    // }, function(err) {
-    // console.error("Could not get Person 100000 - oh well at least it was handled");
-    //    });
+    peopleStore.get("100000").then(function(person) {
+    }, function(err) {
+        console.error("Could not get Person 100000 - oh well at least it was handled");
+    });
 
     // Wire up the button to add a new person via the rest store
     on(dom.byId("addPersonButton"), "click", function(evt) {
@@ -136,10 +153,6 @@ Memory, Rest, SimpleQuery, Trackable, Cache, declare, on, dom, request, OnDemand
 
     });
 
-    
-    // -- Application logic for handling the updateSelectedPersonButton enablement state
-    // Separate event handlers are used to provide a level of separation of concerns and to not to overload the previous event handler functions.
-    
     // When a row in the grid is selected enable the update button
     personGrid.on("dgrid-select", function(event) {
 
