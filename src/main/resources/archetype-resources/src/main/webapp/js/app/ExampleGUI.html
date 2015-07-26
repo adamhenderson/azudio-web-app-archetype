@@ -1,0 +1,87 @@
+<div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="gutters: false">
+	<div id="example-gui-tab-intro" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'top'" style="color: #666; background-color: #eee; border-bottom: 1px solid #b5bcc7;">This is a demonstration desktop application GUI using a complex layout, dijits, dstore and dgrid.</div>
+	<div id="example-gui-tab-top-menu" data-dojo-type="dijit/MenuBar" data-dojo-props="region:'top'">
+		<div id="example-gui-tab-top-menu-file" data-dojo-type="dijit/PopupMenuBarItem">
+			<span>File</span>
+			<div data-dojo-type="dijit/Menu">
+				<div data-dojo-type="dijit/MenuItem" data-dojo-props="onClick:function(){alert('Menu Item 1');}">Menu Item 1</div>
+				<div data-dojo-type="dijit/MenuItem" data-dojo-props="onClick:function(){alert('Menu Item 2');}">Menu Item 2</div>
+				<div data-dojo-type="dijit/MenuItem" data-dojo-props="onClick:function(){alert('Menu Item 3');}">Menu Item 3</div>
+			</div>
+		</div>
+		<div id="example-gui-tab-top-menu-edit" data-dojo-type="dijit/PopupMenuBarItem">
+			<span>Edit</span>
+			<div data-dojo-type="dijit/Menu">
+				<div data-dojo-type="dijit/MenuItem" data-dojo-props="onClick:function(){alert('Menu Item 1');}">Menu Item 1</div>
+				<div data-dojo-type="dijit/MenuItem" data-dojo-props="onClick:function(){alert('Menu Item 2');}">Menu Item 2</div>
+				<div data-dojo-type="dijit/MenuItem" data-dojo-props="onClick:function(){alert('Menu Item 3');}">Menu Item 3</div>
+			</div>
+		</div>
+		<div id="example-gui-tab-top-menu-view" data-dojo-type="dijit/PopupMenuBarItem">
+			<span>View</span>
+			<div data-dojo-type="dijit/Menu">
+				<div data-dojo-type="dijit/MenuItem" data-dojo-props="onClick:function(){alert('Menu Item 1');}">Menu Item 1</div>
+				<div data-dojo-type="dijit/MenuItem" data-dojo-props="onClick:function(){alert('Menu Item 2');}">Menu Item 2</div>
+				<div data-dojo-type="dijit/MenuItem" data-dojo-props="onClick:function(){alert('Menu Item 3');}">Menu Item 3</div>
+			</div>
+		</div>
+		<div id="example-gui-tab-top-menu-actions" data-dojo-type="dijit/PopupMenuBarItem">
+			<span>Actions</span>
+			<div data-dojo-type="dijit/Menu">
+				<div data-dojo-type="dijit/MenuItem" data-dojo-props="onClick:function(){alert('Menu Item 1');}">Menu Item 1</div>
+				<div data-dojo-type="dijit/MenuItem" data-dojo-props="onClick:function(){alert('Menu Item 2');}">Menu Item 2</div>
+				<div data-dojo-type="dijit/MenuItem" data-dojo-props="onClick:function(){alert('Menu Item 3');}">Menu Item 3</div>
+			</div>
+		</div>
+		<div id="example-gui-tab-top-menu-publish" data-dojo-type="dijit/PopupMenuBarItem">
+			<span>Publisher</span>
+			<div data-dojo-type="dijit/Menu">
+				<div data-dojo-type="dijit/MenuItem" data-dojo-props="onClick:function(){alert('Menu Item 1');}">Menu Item 1</div>
+				<div data-dojo-type="dijit/MenuItem" data-dojo-props="onClick:function(){alert('Menu Item 2');}">Menu Item 2</div>
+				<div data-dojo-type="dijit/MenuItem" data-dojo-props="onClick:function(){alert('Menu Item 3');}">Menu Item 3</div>
+			</div>
+		</div>
+		<div id="example-gui-tab-top-menu-tools" data-dojo-type="dijit/PopupMenuBarItem">
+			<span>Tools</span>
+			<div data-dojo-type="dijit/Menu">
+				<div data-dojo-type="dijit/MenuItem" data-dojo-props="onClick:function(){alert('Menu Item 1');}">Menu Item 1</div>
+				<div data-dojo-type="dijit/MenuItem" data-dojo-props="onClick:function(){alert('Menu Item 2');}">Menu Item 2</div>
+				<div data-dojo-type="dijit/MenuItem" data-dojo-props="onClick:function(){alert('Menu Item 3');}">Menu Item 3</div>
+			</div>
+		</div>
+		<div id="example-gui-tab-top-menu-rightoptions" style="float: right; padding: 5px 10px 0 0">
+			<i class="fa fa-search"></i> Search <span style="color: #b5bcc7"> | </span> <i class="fa fa-clock-o"></i> Get Latest <span style="color: #b5bcc7"> | </span> <i class="fa fa-exchange"></i> Compare <span style="color: #b5bcc7"> | </span> <i class="fa fa-edit"></i> Edit
+		</div>
+	</div>
+	<div id="example-gui-tab-left" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="region:'left', gutters: false, splitter: true, minSize: 250, maxSize: 300" style="width: 250px; border-right: 1px solid #b5bcc7;">
+		<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'top'" style="height: 30px; background-color: #eee; border-bottom: 1px solid #b5bcc7;">
+			<div style="float: left; line-height: 30px; color: #666;">
+				<strong style="text-transform: uppercase;">Component:</strong> Installed Components
+			</div>
+		</div>
+		<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'center'" style="padding: 0px">
+			<div id="example-gui-tab-tree"></div>
+		</div>
+	</div>
+	<div id="example-gui-tab-center" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="region:'center', gutters: false" style="border-left: 1px solid #b5bcc7;">
+		<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'top'" style="height: 30px; background-color: #eee; border-bottom: 1px solid #b5bcc7;">
+			<div style="display: inline; line-height: 30px; colour: #666;">
+				<i class="fa fa-star"></i> <span style="color: #b5bcc7"> | </span> <i class="fa fa-briefcase"></i>
+			</div>
+			<span style="color: #b5bcc7"> | </span> <input data-dojo-type="dijit/form/TextBox" />
+			<button data-dojo-type="dijit/form/Button">Go</button>
+		</div>
+		<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'top'" style="background-color: #eee; border-bottom: 1px solid #b5bcc7;">
+			<strong style="color: #666; text-transform: uppercase;">All Files: content</strong>
+			<button data-dojo-type="dijit/form/Button" style="float: right">New Folder</button>
+			<button data-dojo-type="dijit/form/Button" style="float: right">Properties</button>
+		</div>
+		<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'center'" style="padding: 0;">
+			<div id="example-gui-tab-grid" class="noLeftBorder" style="height: 100%"></div>
+		</div>
+		<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'bottom'" style="background-color: #eee; border-top: 1px solid #b5bcc7;">
+			<span>22 Files</span> <span style="float: right;"> Show: 100 | <a href="#">All</a>
+			</span>
+		</div>
+	</div>
+</div>
