@@ -11,9 +11,8 @@ import javax.ws.rs.core.Response;
 import org.slf4j.Logger;
 
 import ${package}.entities.Person;
-
-import com.uaihebert.factory.EasyCriteriaFactory;
-import com.uaihebert.model.EasyCriteria;
+import com.uaihebert.uaicriteria.UaiCriteria;
+import com.uaihebert.uaicriteria.UaiCriteriaFactory;
 
 /**
  * This is the implementation of the REST Service. This particular implementation has the following features:
@@ -25,22 +24,21 @@ import com.uaihebert.model.EasyCriteria;
  */
 public class PersonResourceJPA implements PersonResource {
 
-    private Logger log;
+    private final Logger log;
+    private final EntityManager persistenceService;
 
-    private EntityManager persistenceService;
-
-    //private AtmosphereFramework framework;
-  
-    public PersonResourceJPA(EntityManager persistenceService, Logger log) {
+    // private AtmosphereFramework framework;
+    
+    public PersonResourceJPA(final EntityManager persistenceService, final Logger log) {
         this.persistenceService = persistenceService;
         this.log = log;
     }
     
-//    public PersonResourceJPA(AtmosphereFramework framework, EntityManager persistenceService, Logger log) {
-//        this.framework = framework;
-//        this.persistenceService = persistenceService;
-//        this.log = log;
-//    }
+    // public PersonResourceJPA(AtmosphereFramework framework, EntityManager persistenceService, Logger log) {
+    // this.framework = framework;
+    // this.persistenceService = persistenceService;
+    // this.log = log;
+    // }
 
     /*
      * (non-Javadoc)
@@ -50,18 +48,15 @@ public class PersonResourceJPA implements PersonResource {
     @Override
     public Response get(String sort) {
         log.debug(sort);
-
-        EasyCriteria<Person> easyCriteria = EasyCriteriaFactory.createQueryCriteria(persistenceService, Person.class);
-
+        UaiCriteria<Person> criteria = UaiCriteriaFactory.createQueryCriteria(persistenceService, Person.class);
         if (sort != null) {
             if (sort.startsWith("-")) {
-                easyCriteria.orderByDesc(sort.substring(1));
+                criteria.orderByDesc(sort.substring(1));
             } else {
-                easyCriteria.orderByAsc(sort.substring(1));
+                criteria.orderByAsc(sort.substring(1));
             }
-
         }
-        return Response.ok(easyCriteria.getResultList()).build();
+        return Response.ok(criteria.getResultList()).build();
     }
 
     /*
