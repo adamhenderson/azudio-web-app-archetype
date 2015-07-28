@@ -18,7 +18,7 @@ import org.slf4j.Logger;
 
 import ${package}.entities.Person;
 import ${package}.services.AppCore;
-import com.uaihebert.factory.EasyCriteriaFactory;
+import com.uaihebert.uaicriteria.UaiCriteriaFactory;
 
 /**
  * Index page of your application.
@@ -35,12 +35,16 @@ public class Index {
     @Inject
     private EntityManager persistence;
 
+    @Property
+    private Person p;
+
+    @Inject
+    @Property(read = true)
+    private ComponentResources cr;
+
     public String getApplicationName() {
         return appCore.getApplicationName();
     }
-
-    @Inject
-    private RequestGlobals requestGlobals;
 
     //@Inject
     //private AtmosphereFramework framework;
@@ -60,16 +64,13 @@ public class Index {
     }
 
     public List<Person> getPeople() {
-        return EasyCriteriaFactory.createQueryCriteria(persistence, Person.class).getResultList();
+        return UaiCriteriaFactory.createQueryCriteria(persistence, Person.class).getResultList();
     }
 
-    @Property
-    private Person p;
-
     @CommitAfter
-    public void onClearAll() {
+    public Object onClearAll() {
         persistence.createQuery("delete from Person").executeUpdate();
-
+        return null;
     }
 
 }
