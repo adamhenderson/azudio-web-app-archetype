@@ -45,7 +45,7 @@
 <booleanAttribute key="net.sourceforge.eclipsejetty.launcher.threadPool.limit.enabled" value="false"/>
 <stringAttribute key="net.sourceforge.eclipsejetty.launcher.webappdir" value="src/main/webapp"/>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
-<listEntry value="/${artifactid}"/>
+<listEntry value="/${artifactId}"/>
 </listAttribute>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
 <listEntry value="4"/>
@@ -53,6 +53,6 @@
 <booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_START_ON_FIRST_THREAD" value="true"/>
 <stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="net.sourceforge.eclipsejetty.launcher.JettyLaunchClassPathProvider"/>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="net.sourceforge.eclipsejetty.starter.embedded.JettyEmbeddedLauncherMain"/>
-<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="${artifactid} UAT"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="${artifactId} UAT"/>
 <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Dtapestry.execution-mode=UAT"/>
 </launchConfiguration>
