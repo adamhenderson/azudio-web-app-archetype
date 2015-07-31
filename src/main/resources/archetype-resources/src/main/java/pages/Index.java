@@ -8,10 +8,10 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import org.apache.tapestry5.ComponentResources;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.jpa.annotations.CommitAfter;
-import org.apache.tapestry5.services.RequestGlobals;
 //import org.atmosphere.cpr.AtmosphereFramework;
 //import org.atmosphere.cpr.Broadcaster;
 import org.slf4j.Logger;
