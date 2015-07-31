@@ -11,8 +11,14 @@ declare, dom, Stateful, fx) {
     
     return new declare("Application", [ Stateful ], {
 
+        loaded:false,
+        
         init : function() {
        
+            if(this.loaded){
+                return;
+            }
+            
             // ----------------------------------------------------------
             // Timing Information
 
@@ -30,10 +36,18 @@ declare, dom, Stateful, fx) {
                         n.style.display = "none";
                     }
                 }).play();
+                
+                this.loaded = true;
+                
             }, 500);
 
+            
             console.info("Initialisation complete");
         },
+        
+        sayHello:function(){
+            return "Hello";
+        }
         
     })();
 
