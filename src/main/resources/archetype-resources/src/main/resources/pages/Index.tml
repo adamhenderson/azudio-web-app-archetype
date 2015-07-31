@@ -16,7 +16,11 @@
         <div id="loader">
             <div id="loader-mover">
                 <div id="loader-inner">
-                    <h2 id="loader-message" style="padding: 5px;">${application-name} <br/>Loading ...</h2>
+                    <h2 id="loader-message" style="padding: 5px;">
+                        ${application-name}
+                        <br />
+                        Loading ...
+                    </h2>
                 </div>
             </div>
         </div>
@@ -59,7 +63,8 @@
                             <h4>Server-Side</h4>
                             <li>Tapestry 5.4 (beta-26)</li>
                             <li>Tapestry JPA using Hibernate &amp; Configuration</li>
-                            <li>EasyCriteria for simpler JPA queries</li>
+                            <li>UaiCriteria 4.0 for simpler JPA queries</li>
+                            <li>Examples of how to invoke Tapestry Events from Dijits via XHR</li>
                             <li>Maven directory layout</li>
                             <li>Fast running with RunJettyRun or the Eclipse Jetty Integration (right-click, run as...)</li>
                             <li>Example REST Person API through the Tynamo tapestry-resteasy 5.4 integration</li>
@@ -67,7 +72,7 @@
                             <li>Real-Time Support using the Atmosphere Framework through the Azudio tapestry-atmosphere integration</li>
                         </ul>
                     </p>
-                    <p>Note: This application starts up in Production mode by default loading the ProductionModule class, so running in Production mode. To set the execution mode add the -Dtapestry.execution-mode=UAT as a JVM System parameter.</p>
+                    <p>Note: This application starts up in Production mode by default loading the ProductionModule class, so running in Production mode. To set the execution mode add the -Dtapestry.execution-mode=UAT as a JVM System parameter, this will load the UatModeModule class.</p>
                 </div>
                 <!-- REST TAB -->
                 <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="title: 'REST Instructions', closable: false">
@@ -107,8 +112,6 @@
                         <h2>Drag'n'Drop Example</h2>
                         <p>This page is an example of how Dojo D'n'D can be used.</p>
                         <p>Drag items from the left box into the areas on the right.</p>
-
-
                     </div>
                     <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="splitter:true, region: 'left'" style="width:50%">
                         <h2>Source</h2>
