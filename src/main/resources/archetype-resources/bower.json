@@ -1,0 +1,25 @@
+{
+  "name": "${artifactId}",
+  "version": "0.0.0",
+  "authors": [
+    "Your Name <yourname@company.com>"
+  ],
+  "moduleType": [
+    "amd"
+  ],
+  //"license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+    "dependencies": {
+    "dojo": "~1.10.4",
+    "dijit": "~1.10.4",
+    "util": "dojo-util#~1.10.4"
+    "dstore": "~1.1.0",
+    "dgrid":"~0.4.0"
+  }
+}

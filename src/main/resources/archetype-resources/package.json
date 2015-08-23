@@ -1,0 +1,30 @@
+{
+    "name": "${artifactId}",
+    "description": "${application-name}.",
+    "version": "${version}",
+    "keywords": [],
+    "maintainers": [{
+        "name": "Your Name"
+    }],
+    "contributors": [{
+        "name": "Your Name"
+    }],
+    "licenses": [{
+        "type": "BSD",
+        "url": "http://bugs.dojotoolkit.org/browser/dojox/trunk/LICENSE#L13"
+    }],
+    // "bugs": "https://github.com/example/issues",
+    //"repositories": [{
+    //    "type": "git",
+    //    "url": "http://github.com/example.git",
+    //    "path": "packages/app"
+    //}],
+    "dependencies": {
+        "dojo": "~1.10.4",
+        "dijit": "~1.10.4",
+        "dojox": "~1.10.4"
+    },
+    "main": "src",
+    "homepage": "http://example.com/",
+    "dojoBuild": "app.profile.js"
+}
