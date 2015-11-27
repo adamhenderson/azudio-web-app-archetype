@@ -6,9 +6,8 @@
     <version>${version}</version>
     <packaging>war</packaging>
     <properties>
-        <tapestry-release-version>5.4-rc-1</tapestry-release-version>
+        <tapestry-release-version>5.4-beta-35</tapestry-release-version>
         <jboss-resteasy-version>3.0.11.Final</jboss-resteasy-version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <build>
