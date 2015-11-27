@@ -61,7 +61,7 @@
                             <li>SitePen dstore 1.0.0 &amp; dgrid 0.4.0</li>
                             <li>Font Awesome 4.3.0</li>
                             <h4>Server-Side</h4>
-                            <li>Tapestry 5.4 (beta-26)</li>
+                            <li>Tapestry 5.4 (rc-1)</li>
                             <li>Tapestry JPA using Hibernate &amp; Configuration</li>
                             <li>UaiCriteria 4.0 for simpler JPA queries</li>
                             <li>Examples of how to invoke Tapestry Events from Dijits via XHR</li>
