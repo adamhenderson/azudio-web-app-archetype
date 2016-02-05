@@ -68,6 +68,9 @@
                 <include>webdefault_readme.txt</include>
                 <include>sonar-project.properties</include>
                 <include>*.launch</include>
+                <include>*.json</include>
+                <include>.bowerrc</include>
+                <include>app.profile.js</include>
             </includes>
         </fileSet>
     </fileSets>
