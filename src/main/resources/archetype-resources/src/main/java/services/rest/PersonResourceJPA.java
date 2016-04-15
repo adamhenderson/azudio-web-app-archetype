@@ -1,10 +1,7 @@
-#set( $symbol_pound = '#' )
-#set( $symbol_dollar = '$' )
-#set( $symbol_escape = '\' )
-package ${package}.services.rest;
+#set($symbol_pound='#')#set($symbol_dollar='$')#set($symbol_escape='\')package ${package}.services.rest;
 
 import javax.persistence.EntityManager;
-import javax.ws.rs.WebApplicationException;
+import javax.persistence.PersistenceContext;
 import javax.ws.rs.core.Response;
 
 //import org.atmosphere.cpr.AtmosphereFramework;
@@ -25,15 +22,22 @@ import com.uaihebert.uaicriteria.UaiCriteriaFactory;
 public class PersonResourceJPA implements PersonResource {
 
     private final Logger log;
-    private final EntityManager persistenceService;
+
+    @Inject
+    @PersistenceContext(unitName = "${artifactId}")
+    private EntityManager persistenceService;
 
     // private AtmosphereFramework framework;
-    
-    public PersonResourceJPA(final EntityManager persistenceService, final Logger log) {
-        this.persistenceService = persistenceService;
+
+    public PersonResourceJPA(final Logger log) {
         this.log = log;
     }
-    
+
+    // public PersonResourceJPA(final EntityManager persistenceService, final Logger log) {
+    // this.persistenceService = persistenceService;
+    // this.log = log;
+    // }
+
     // public PersonResourceJPA(AtmosphereFramework framework, EntityManager persistenceService, Logger log) {
     // this.framework = framework;
     // this.persistenceService = persistenceService;
@@ -71,11 +75,11 @@ public class PersonResourceJPA implements PersonResource {
         persistenceService.persist(person);
         log.debug("New Person id:" + person.getId());
 
-        //framework.getBroadcasterFactory().lookup("/tapestryatmospherehandlerexample1").broadcast("message=" + page.getName());
+        // framework.getBroadcasterFactory().lookup("/tapestryatmospherehandlerexample1").broadcast("message=" + page.getName());
 
         return Response.ok(person).link("/rest/people/" + person.getId(), "self").status(201).build();
     }
-    
+
     /*
      * (non-Javadoc)
      * 
@@ -87,7 +91,7 @@ public class PersonResourceJPA implements PersonResource {
         persistenceService.merge(person);
         log.debug("Update Person id:" + person.getId());
 
-        //framework.getBroadcasterFactory().lookup("/tapestryatmospherehandlerexample1").broadcast("message=" + page.getName());
+        // framework.getBroadcasterFactory().lookup("/tapestryatmospherehandlerexample1").broadcast("message=" + page.getName());
 
         return Response.ok(person).build();
     }
@@ -101,7 +105,7 @@ public class PersonResourceJPA implements PersonResource {
     public Response find(Long id) {
         Person person = (Person) persistenceService.find(Person.class, id);
         if (person == null) {
-            throw new WebApplicationException(Response.Status.NOT_FOUND);
+            return Response.status(Response.Status.NOT_FOUND).build();
         }
         return Response.ok(person).build();
     }

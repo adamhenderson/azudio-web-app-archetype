@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import org.apache.tapestry5.ComponentResources;
 import org.apache.tapestry5.annotations.Property;
@@ -33,6 +34,7 @@ public class Index {
     private AppCore appCore;
 
     @Inject
+    @PersistenceContext(unitName = "${artifactId}")
     private EntityManager persistence;
 
     @Property

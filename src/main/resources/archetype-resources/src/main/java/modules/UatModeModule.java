@@ -35,7 +35,7 @@ public class UatModeModule {
             // * @param unitInfo
             // */
             // public void configure(TapestryPersistenceUnitInfo unitInfo) {
-            // unitInfo.persistenceProviderClassName("org.hibernate.ejb.HibernatePersistence");
+            // unitInfo.persistenceProviderClassName("org.hibernate.jpa.HibernatePersistenceProvider");
             // unitInfo.transactionType(PersistenceUnitTransactionType.RESOURCE_LOCAL);
             // unitInfo.addProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
             // unitInfo.addProperty("hibernate.connection.url", "jdbc:mysql://localhost/uat-${artifactId}");
@@ -52,7 +52,7 @@ public class UatModeModule {
              */
             @Override
             public void configure(TapestryPersistenceUnitInfo unitInfo) {
-                unitInfo.persistenceProviderClassName("org.hibernate.ejb.HibernatePersistence");
+                unitInfo.persistenceProviderClassName("org.hibernate.jpa.HibernatePersistenceProvider");
                 unitInfo.transactionType(PersistenceUnitTransactionType.RESOURCE_LOCAL);
                 unitInfo.addProperty("hibernate.connection.driver_class", "org.hsqldb.jdbcDriver");
                 unitInfo.addProperty("hibernate.connection.url", "jdbc:hsqldb:file:database/uat-${artifactId}");
