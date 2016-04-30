@@ -8,6 +8,7 @@
     <properties>
         <tapestry-release-version>5.4.1</tapestry-release-version>
         <jboss-resteasy-version>3.0.16.Final</jboss-resteasy-version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <build>
