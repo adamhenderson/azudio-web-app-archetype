@@ -9,7 +9,7 @@ declare, domConstruct, ready, registry, Tree, ContentPane, OnDemandGrid, DijitRe
 
         var tc = registry.byId("main-tab-container");
 
-        if (tc != undefined) {
+        if (tc !== undefined) {
 
             tc.addChild(new ContentPane({
                 title : "Examples GUI",
@@ -32,7 +32,7 @@ declare, domConstruct, ready, registry, Tree, ContentPane, OnDemandGrid, DijitRe
 
         // Example GUI Tab - Grids and Tree
 
-        var exampleGUITab_grid = new declare([ OnDemandGrid, DijitRegistry ])({
+        new declare([ OnDemandGrid, DijitRegistry ])({
             collection : new Memory({
                 data : [ {
                     "first" : "Dave",
@@ -91,7 +91,7 @@ declare, domConstruct, ready, registry, Tree, ContentPane, OnDemandGrid, DijitRe
             mayHaveChildren : function(item) {
                 return "children" in item;
             },
-            getRoot : function(onItem, onError) {
+            getRoot : function(onItem) {
                 // there should be only a single object in (the root of) this collection,
                 // so we just return that
                 this.forEach(onItem);

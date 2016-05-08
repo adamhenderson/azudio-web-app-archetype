@@ -1,5 +1,5 @@
 /**
- * This file contains the main Application definition. 
+ * This file contains the main Application definition.
  */
 define([
 
@@ -8,27 +8,27 @@ define([
 ], function(
 
 declare, dom, Stateful, fx) {
-    
+
     return new declare("Application", [ Stateful ], {
 
-        loaded:false,
-        
+        loaded : false,
+
         init : function() {
-       
-            if(this.loaded){
+
+            if (this.loaded) {
                 return;
             }
-            
+
             // ----------------------------------------------------------
             // Timing Information
 
             var loadCompleteTime = new Date();
-            console.log("Total load time: " + (loadCompleteTime - startTime) + "ms");
+            console.info("Total load time: " + (loadCompleteTime - startTime) + "ms");
 
             dom.byId('loader-message').innerHTML += " done.";
 
             // Fade out the Loading splash screen
-            setTimeout(function hideLoader() {
+            setTimeout(function() {
                 fx.fadeOut({
                     node : 'loader',
                     duration : 500,
@@ -36,19 +36,18 @@ declare, dom, Stateful, fx) {
                         n.style.display = "none";
                     }
                 }).play();
-                
+
                 this.loaded = true;
-                
+
             }, 500);
 
-            
             console.info("Initialisation complete");
         },
-        
-        sayHello:function(){
+
+        sayHello : function() {
             return "Hello";
         }
-        
+
     })();
 
 });

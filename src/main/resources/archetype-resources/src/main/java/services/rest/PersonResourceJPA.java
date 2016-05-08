@@ -4,7 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.ws.rs.core.Response;
 
-//import org.atmosphere.cpr.AtmosphereFramework;
+import org.apache.tapestry5.ioc.annotations.Inject;
 import org.slf4j.Logger;
 
 import ${package}.entities.Person;
@@ -27,22 +27,9 @@ public class PersonResourceJPA implements PersonResource {
     @PersistenceContext(unitName = "${artifactId}")
     private EntityManager persistenceService;
 
-    // private AtmosphereFramework framework;
-
     public PersonResourceJPA(final Logger log) {
         this.log = log;
     }
-
-    // public PersonResourceJPA(final EntityManager persistenceService, final Logger log) {
-    // this.persistenceService = persistenceService;
-    // this.log = log;
-    // }
-
-    // public PersonResourceJPA(AtmosphereFramework framework, EntityManager persistenceService, Logger log) {
-    // this.framework = framework;
-    // this.persistenceService = persistenceService;
-    // this.log = log;
-    // }
 
     /*
      * (non-Javadoc)
@@ -50,9 +37,9 @@ public class PersonResourceJPA implements PersonResource {
      * @see ${package}.rest.PersonResource${symbol_pound}get(java.lang.String)
      */
     @Override
-    public Response get(String sort) {
+    public Response get(final String sort) {
         log.debug(sort);
-        UaiCriteria<Person> criteria = UaiCriteriaFactory.createQueryCriteria(persistenceService, Person.class);
+        final UaiCriteria<Person> criteria = UaiCriteriaFactory.createQueryCriteria(persistenceService, Person.class);
         if (sort != null) {
             if (sort.startsWith("-")) {
                 criteria.orderByDesc(sort.substring(1));
@@ -69,13 +56,11 @@ public class PersonResourceJPA implements PersonResource {
      * @see ${package}.rest.PersonResource${symbol_pound}addNew(${package}.entities.Person)
      */
     @Override
-    public Response addNew(Person person) {
+    public Response addNew(final Person person) {
 
         log.debug("New Person id:" + person.getId());
         persistenceService.persist(person);
         log.debug("New Person id:" + person.getId());
-
-        // framework.getBroadcasterFactory().lookup("/tapestryatmospherehandlerexample1").broadcast("message=" + page.getName());
 
         return Response.ok(person).link("/rest/people/" + person.getId(), "self").status(201).build();
     }
@@ -86,12 +71,10 @@ public class PersonResourceJPA implements PersonResource {
      * @see ${package}.rest.PersonResource${symbol_pound}update(${package}.entities.Person)
      */
     @Override
-    public Response update(Person person) {
+    public Response update(final Person person) {
         log.debug("Update Person id:" + person.getId());
         persistenceService.merge(person);
         log.debug("Update Person id:" + person.getId());
-
-        // framework.getBroadcasterFactory().lookup("/tapestryatmospherehandlerexample1").broadcast("message=" + page.getName());
 
         return Response.ok(person).build();
     }
@@ -102,8 +85,8 @@ public class PersonResourceJPA implements PersonResource {
      * @see ${package}.rest.PersonResource${symbol_pound}find(java.lang.Long)
      */
     @Override
-    public Response find(Long id) {
-        Person person = (Person) persistenceService.find(Person.class, id);
+    public Response find(final Long id) {
+        final Person person = persistenceService.find(Person.class, id);
         if (person == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }

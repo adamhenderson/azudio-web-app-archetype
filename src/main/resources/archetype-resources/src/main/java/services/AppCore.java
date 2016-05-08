@@ -8,4 +8,6 @@ package ${package}.services;
  */
 public interface AppCore {
     public String getApplicationName();
+
+    public String getHelloMessage();
 }

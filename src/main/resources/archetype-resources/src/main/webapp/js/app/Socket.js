@@ -1,8 +1,8 @@
-define([ 
-         
-"dojox/socket", "app/DataStoresModule", "dojo/json" ], function(
-                 
-socket, stores, JSON
+define([
+
+"dojox/socket", "app/DataStoresModule" ], function(
+
+socket, stores
 
 ) {
 
@@ -12,13 +12,11 @@ socket, stores, JSON
     });
 
     s.on("open", function(event) {
-        console.log("Successfully connected to server", event);
+        console.info("Successfully connected to server", event);
     });
 
     s.on("message", function(event) {
-        // We need to split on the "|" character because atmosphere also preprends the response with the message length as multiple messages can be returned in one response
-        // var data = JSON.parse(event.data.split("|")[1]);
-        console.log("Message", event.data);
+        console.info("Message", event.data);
         stores.personRestStore.emit("add", {
             target : {
                 id : new Date().getTime(),
@@ -28,7 +26,7 @@ socket, stores, JSON
     });
 
     s.on("close", function(event) {
-        console.log("Lost connection to the server", event.data);
+        console.info("Lost connection to the server", event.data);
     });
 
     return s;

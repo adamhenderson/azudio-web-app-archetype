@@ -6,7 +6,7 @@ declare, Memory, Rest, Trackable
 
 ) {
 
-    console.log("DataStoresModule called");
+    console.info("DataStoresModule called");
 
     return {
 

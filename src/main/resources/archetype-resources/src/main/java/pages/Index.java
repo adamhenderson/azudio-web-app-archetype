@@ -13,8 +13,6 @@ import org.apache.tapestry5.ComponentResources;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.jpa.annotations.CommitAfter;
-//import org.atmosphere.cpr.AtmosphereFramework;
-//import org.atmosphere.cpr.Broadcaster;
 import org.slf4j.Logger;
 
 import ${package}.entities.Person;
@@ -48,21 +46,15 @@ public class Index {
         return appCore.getApplicationName();
     }
 
-    //@Inject
-    //private AtmosphereFramework framework;
-
     @CommitAfter
     public void onNewEntity() {
 
-        Person p = new Person();
+        p = new Person();
         p.setName("Test: " + new Date().getTime());
 
         // Save the new Person instance
         persistence.persist(p);
 
-        // Now broadcast that new Person to all subscribers
-        //Broadcaster broadcaster = framework.getAtmosphereConfig().getBroadcasterFactory().lookup("/tapestryatmospherehandlerexample1");
-        //broadcaster.broadcast(p);
     }
 
     public List<Person> getPeople() {

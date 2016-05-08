@@ -34,23 +34,20 @@ Memory, Rest, SimpleQuery, Trackable, Cache, declare, on, dom, request, OnDemand
 
     // Get an entity with an id of '1'
     peopleStore.get("1").then(function(person) {
-
         console.debug("Get Person 1 (should be a XHR)", person);
-
     }, function(err) {
-
-        console.error("Could not get Person 1 - oh well at least it was handled");
-
+        console.error("Could not get Person 1 - oh well at least it was handled", err.message);
     });
 
     // Demonstrate attempting to get a non-existent person to show error handling
     peopleStore.get("100000").then(function(person) {
+        console.error("Person 100000 was found!", person);
     }, function(err) {
-        console.error("Could not get Person 100000 - oh well at least it was handled");
+        console.error("Could not get Person 100000 - oh well at least it was handled", err.message);
     });
 
     // Wire up the button to add a new person via the rest store
-    on(dom.byId("addPersonButton"), "click", function(evt) {
+    on(dom.byId("addPersonButton"), "click", function() {
 
         peopleStore.add({
             name : "New Person"
@@ -61,7 +58,7 @@ Memory, Rest, SimpleQuery, Trackable, Cache, declare, on, dom, request, OnDemand
     });
 
     // Wire up the button to update button to demostrate updating an existing item
-    on(dom.byId("updatePerson1Button"), "click", function(evt) {
+    on(dom.byId("updatePerson1Button"), "click", function() {
 
         peopleStore.get(1).then(function(person) {
 
@@ -71,29 +68,9 @@ Memory, Rest, SimpleQuery, Trackable, Cache, declare, on, dom, request, OnDemand
 
         }, function(err) {
 
-            console.error("Could not get the Person 1 item i order to update it.");
+            console.error("Could not get the Person 1 item i order to update it.", err);
 
         });
-
-    });
-
-    on(dom.byId("updateSelectedPersonButton"), "click", function(event) {
-
-        // Get the rows that were just selected
-        var rows = event.rows;
-
-        // Iterate through all currently-selected items
-        for ( var id in personGrid.selection) {
-
-            peopleStore.get(id).then(function(person) {
-
-                person.name = "Person" + new Date().getTime();
-
-                peopleStore.put(person);
-
-            });
-
-        }
 
     });
 
@@ -154,19 +131,40 @@ Memory, Rest, SimpleQuery, Trackable, Cache, declare, on, dom, request, OnDemand
     });
 
     // When a row in the grid is selected enable the update button
-    personGrid.on("dgrid-select", function(event) {
+    personGrid.on("dgrid-select", function() {
 
         dom.byId("updateSelectedPersonButton").disabled = false;
 
     });
 
     // When the grid has no selection disable the update button
-    personGrid.on('dgrid-deselect', function(event) {
+    personGrid.on('dgrid-deselect', function() {
 
         // NOTE: Using ECMAScript 5 Object.keys() function
-        if (Object.keys(personGrid.selection).length == 0) {
+        if (Object.keys(personGrid.selection).length === 0) {
 
             dom.byId("updateSelectedPersonButton").disabled = true;
+
+        }
+
+    });
+
+    on(dom.byId("updateSelectedPersonButton"), "click", function() {
+
+        function createPerson(person) {
+
+            person.name = "Person" + new Date().getTime();
+
+            peopleStore.put(person);
+
+        }
+
+        // Iterate through all currently-selected items
+        for ( var id in personGrid.selection) {
+
+            if (personGrid.selection.hasOwnProperty(id)) {
+                peopleStore.get(id).then(createPerson(person));
+            }
 
         }
 

@@ -12,5 +12,10 @@ public class AppCoreImpl implements AppCore{
     public String getApplicationName() {
         return "${artifactId}";
     }
+    
+    @Override
+    public String getHelloMessage() {
+        return "Hello";
+    }
 
 }
