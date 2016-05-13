@@ -1,4 +1,7 @@
-package com.azudio.archetypetest.services;
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+package ${package}.services;
 
 import org.apache.tapestry5.internal.services.DocumentLinker;
 import org.apache.tapestry5.json.JSONArray;
