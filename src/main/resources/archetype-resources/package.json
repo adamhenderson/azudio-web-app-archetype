@@ -20,9 +20,9 @@
     //    "path": "packages/app"
     //}],
     "dependencies": {
-        "dojo": "~1.11.1",
-        "dijit": "~1.11.1",
-        "dojox": "~1.11.1"
+        "dojo": ">=1.14",
+        "dijit": ">=1.14",
+        "dojox": ">=1.14"
     },
     "main": "src",
     "homepage": "http://example.com/",
